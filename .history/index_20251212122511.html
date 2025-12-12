@@ -3,8 +3,8 @@
 
 <head>
     <!-- =========================
-    Basics
-    ========================== -->
+       Basics
+  ========================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -592,9 +592,9 @@
     </div>
 </section>
 
-    <!-- =========================
-    FOOTER – clean, no card, no address
-    ========================== -->
+<!-- =========================
+     FOOTER – clean, no card, no address
+========================== -->
 <footer class="w-full border-t border-sky-200 bg-sky-100">
     <div class="mx-auto max-w-7xl px-4 py-6">
         <!-- Row 1 -->
@@ -636,33 +636,38 @@
     </div>
 </footer>
 
-    <!-- =========================
-        Tiny JS: year + mobile menu toggle
-    ========================== -->
-    <script>
-    // Year
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    const btn = document.getElementById("menuBtn");
-    const menu = document.getElementById("mobileMenu");
-
-    if (btn && menu) {
-    btn.addEventListener("click", () => {
-    const isOpen = !menu.classList.contains("hidden");
-    menu.classList.toggle("hidden");
-    btn.setAttribute("aria-expanded", String(!isOpen));
-    });
-
-    // Close menu when clicking a link
-    menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-        menu.classList.add("hidden");
-        btn.setAttribute("aria-expanded", "false");
-    });
-    });
-    }
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
+
+
+
+        <!-- =========================
+    Tiny JS: year + mobile menu toggle
+    ========================== -->
+        <script>
+        // Year
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const btn = document.getElementById("menuBtn");
+        const menu = document.getElementById("mobileMenu");
+
+        if (btn && menu) {
+            btn.addEventListener("click", () => {
+                const isOpen = !menu.classList.contains("hidden");
+                menu.classList.toggle("hidden");
+               At            ute("aria-expanded", String(!isOpen));
+            });
+
+            // Close menu when clk
+                menu.            ectorAll("a").forEach((a) => {
+                a.addEventListener("click",                                 men            ist.add("hidden");
+                    btn.setAtt            aria-expanded", "false");
+                });
+                            }
+        </script>
 </body>
+
 </html>
