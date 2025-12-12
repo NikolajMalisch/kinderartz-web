@@ -691,57 +691,51 @@
     </main>
 
 <footer class="w-full border-t border-sky-200 bg-sky-100">
-  <div class="mx-auto max-w-3xl px-4 py-8 text-center">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
 
-    <!-- Logo + Name -->
-    <div class="flex flex-col items-center gap-2">
-      <img
-        src="images/2[1].webp"
-        alt="Praxis Logo"
-        class="h-12 w-12 rounded-full object-contain shadow-sm ring-1 ring-white/60"
-        width="48"
-        height="48"
-        loading="lazy"
-        decoding="async"
-      />
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <!-- Logo + Name -->
+      <div class="flex items-center gap-3">
+        <img
+          src="images/2[1].webp"
+          alt="Praxis Logo"
+          class="h-11 w-11 rounded-full object-contain shadow-sm ring-1 ring-white/60"
+          width="44"
+          height="44"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="leading-tight">
+          <p class="text-sm font-semibold text-slate-900">
+            Praxis Dr. med. Bernd Kohlhase
+          </p>
+          <p class="text-xs text-slate-600">
+            Kinder- & Jugendmedizin · Hameln
+          </p>
+        </div>
+      </div>
 
-      <div class="leading-tight">
-        <p class="text-sm font-semibold text-slate-900">
-          Praxis Dr. med. Bernd Kohlhase
-        </p>
-        <p class="text-xs text-slate-600">
-          Kinder- & Jugendmedizin · Hameln
-        </p>
+      <!-- Links -->
+      <div class="flex justify-center sm:justify-end gap-4 text-xs">
+        <a href="/impressum.html"
+           class="font-medium text-slate-700 hover:text-sky-700 transition">
+          Impressum
+        </a>
+        <a href="/datenschutz.html"
+           class="font-medium text-slate-700 hover:text-sky-700 transition">
+          Datenschutz
+        </a>
       </div>
     </div>
 
-    <!-- Links -->
-    <div class="mt-4 flex justify-center gap-6 text-xs">
-      <a
-        href="/impressum.html"
-        class="font-medium text-slate-700 hover:text-sky-700 transition"
-      >
-        Impressum
-      </a>
-      <a
-        href="/datenschutz.html"
-        class="font-medium text-slate-700 hover:text-sky-700 transition"
-      >
-        Datenschutz
-      </a>
-    </div>
+    <div class="mt-4 h-px w-full bg-sky-200"></div>
 
-    <!-- Divider -->
-    <div class="mx-auto mt-5 h-px w-24 bg-sky-300/60"></div>
-
-    <!-- Copyright -->
-    <p class="mt-3 text-[11px] text-slate-600">
+    <p class="mt-3 text-[11px] text-slate-600 text-center sm:text-left">
       © <span id="year"></span> Praxis Dr. med. Bernd Kohlhase · Alle Rechte vorbehalten
     </p>
 
   </div>
 </footer>
-
 
 
 
