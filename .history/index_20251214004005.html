@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="de" class="h-full scroll-smooth">
+<head>
+  <!-- =========================
+    Basics
+  ========================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Praxis Dr. med. Bernd Kohlhase – Kinder- & Jugendmedizin in Hameln</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --font-sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      --font-serif:"Libre Baskerville",Georgia,"Times New Roman",serif;
+    }
+    body{
+      font-family:var(--font-sans);
+      line-height:1.7;
+      color:#1e293b;
+      background:#fdfcfb;
+    }
+    h1,h2,h3,h4{
+      font-family:var(--font-serif);
+      color:#0f172a;
+    }
+    .font-serif-kinder{font-family:var(--font-serif);}
+    .glass{
+      backdrop-filter:blur(16px);
+      background:rgba(255,255,255,.8);
+    }
+    summary::-webkit-details-marker{display:none;}
+  </style>
+</head>
+
+<body class="min-h-full text-slate-800">
+
+<!-- =========================
+HEADER
+========================== -->
+<header class="sticky top-0 z-50 bg-gradient-to-r from-sky-200 via-teal-200 to-emerald-200 backdrop-blur-xl border-b border-teal-100/70">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <a href="#top" class="flex items-center gap-5">
+        <img src="images/2[1].webp" alt="Praxis Logo"
+          class="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-white/50 p-1 shadow ring-1 ring-white/60"/>
+
+        <div class="flex flex-col leading-snug">
+          <span class="text-lg font-semibold text-slate-900">
+            Dr. med. Bernd Kohlhase
+          </span>
+          <span class="text-sm text-slate-700">
+            Facharzt für Kinder- und Jugendmedizin
+          </span>
+          <span class="text-xs text-slate-600 mt-0.5">
+            Privatsprechstunde: Ärztin Dr. med. Maria Kohlhase · Tätigkeitsschwerpunkt: Klassische Homöopathie
+          </span>
+        </div>
+      </a>
+
+      <div class="hidden sm:flex gap-3">
+        <a href="/maria-kohlhase.html#top"
+          class="rounded-full border bg-white/70 px-4 py-2 text-sm">
+          Privatsprechstunde
+        </a>
+        <a href="tel:+495151000000"
+          class="rounded-full bg-sky-500 px-6 py-2.5 text-sm font-semibold text-white">
+          Jetzt anrufen
+        </a>
+      </div>
+
+      <button id="menuBtn" class="sm:hidden p-2 rounded bg-white/70">☰</button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden pb-4">
+      <div class="glass rounded-xl p-3">
+        <a class="block px-3 py-2" href="#leistungen">Leistungen</a>
+        <a class="block px-3 py-2" href="#sprechzeiten">Sprechzeiten</a>
+        <a class="block px-3 py-2" href="#kontakt">Kontakt</a>
+        <a class="block px-3 py-2" href="/maria-kohlhase.html#top">Privatsprechstunde</a>
+        <a class="block mt-2 text-center bg-sky-500 text-white rounded py-2"
+          href="tel:+495151000000">Jetzt anrufen</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- =========================
+HERO
+========================== -->
+<section class="py-16 bg-gradient-to-b from-white to-sky-50">
+  <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
+    <div>
+      <h1 class="font-serif-kinder text-4xl">
+        Einfühlsame Medizin für Kinder & Jugendliche
+      </h1>
+      <p class="mt-4 text-slate-600">
+        Vorsorge, Impfungen, Akutsprechstunde und Beratung – mit Zeit, Ruhe und medizinischer Sorgfalt.
+      </p>
+    </div>
+    <img src="images/doktor.webp" class="rounded-3xl shadow"/>
+  </div>
+</section>
+
+<!-- =========================
+SPRECHZEITEN
+========================== -->
+<section id="sprechzeiten" class="py-14 bg-white">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl mb-4">Sprechzeiten</h2>
+    <ul class="space-y-2 text-slate-700">
+      <li>Mo–Di: 08:30–12:00 · 15:00–18:00</li>
+      <li>Mi: 08:30–12:00</li>
+      <li>Do: 08:30–12:00 · 15:00–18:00</li>
+      <li>Fr: 08:30–12:00</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =========================
+LEISTUNGEN (ALLE 6)
+========================== -->
+<section id="leistungen" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-2xl mb-8 text-center">Leistungen</h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <article><h3>Vorsorgeuntersuchungen</h3><p>U1–J2</p></article>
+      <article><h3>Impfungen</h3><p>Nach STIKO</p></article>
+      <article><h3>Akutsprechstunde</h3><p>Schnelle Hilfe</p></article>
+      <article><h3>Entwicklungsdiagnostik</h3><p>Motorik, Sprache, Verhalten</p></article>
+      <article><h3>Beratung für Eltern</h3><p>Ernährung, Schlaf, Pubertät</p></article>
+      <article><h3>Allergologie</h3><p>Diagnostik & Behandlung</p></article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+KONTAKT
+========================== -->
+<section id="kontakt" class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl mb-4">Kontakt</h2>
+    <p>Fröbelweg 4 · 31785 Hameln</p>
+    <p>Tel: 05151 / 000000</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-sky-100 py-6 text-center text-xs text-slate-600">
+  © <span id="year"></span> Praxis Dr. med. Bernd Kohlhase
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  const btn=document.getElementById("menuBtn");
+  const menu=document.getElementById("mobileMenu");
+  btn.onclick=()=>menu.classList.toggle("hidden");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="de" class="h-full scroll-smooth">
+<head>
+  <!-- =========================
+    Basics
+    ========================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Praxis Dr. med. Bernd Kohlhase – Kinder- & Jugendmedizin in Hameln</title>
+
+  <!-- =========================
+    Fonts (Performance: preconnect)
+    ========================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- =========================
+    Tailwind CDN (MVP ok)
+    Hinweis: In Production besser build + purge
+    ========================== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* =========================
+      Typografie & Grundlayout
+      ========================== */
+    :root {
+      --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --font-serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      color: #1e293b; /* slate-800 */
+      background: #fdfcfb;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      color: #0f172a; /* slate-900 */
+      letter-spacing: 0;
+    }
+
+    h1 { font-weight: 700; line-height: 1.2; }
+    h2 { font-weight: 700; line-height: 1.25; }
+    h3 { font-weight: 400; line-height: 1.3; }
+    h4 { font-weight: 400; }
+
+    .font-serif-kinder { font-family: var(--font-serif); }
+
+    /* Glass Effekt für Karten/Dropdowns */
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Sanfte Animation (optional) */
+    @keyframes float-soft {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-soft { animation: float-soft 8s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .float-soft { animation: none !important; }
+    }
+
+    /* Details/summary Marker entfernen */
+    summary::-webkit-details-marker { display: none; }
+  </style>
+</head>
+
+<body class="min-h-full text-slate-800">
+  <!-- =========================
+    HEADER (Sticky) + Mobile Menu
+    Desktop: "Privatsprechstunde" als Button + Dropdown-Karte (Maria)
+    Mobile: Karte im Burger-Menü
+    ========================== -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-sky-200 via-teal-200 to-emerald-200 backdrop-blur-xl border-b border-teal-100/70">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+      <!-- ====== Kopfzeile (Logo + Titel + Actions) ====== -->
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo + Praxisname -->
+        <a href="#top" class="flex items-center gap-5" aria-label="Startseite">
+          <img
+            src="images/2[1].webp"
+            alt="Praxis Logo"
+            class="h-14 w-14 sm:h-16 sm:w-16 object-contain rounded-full bg-white/50 p-1 shadow-lg shadow-sky-100/40 ring-1 ring-white/60"
+            width="64"
+            height="64"
+            loading="eager"
+            decoding="async" />
+          <div class="flex flex-col justify-center leading-snug">
+            <span class="text-[1.05rem] sm:text-[1.25rem] font-semibold text-slate-900 tracking-tight">
+              Praxis Dr. med. Bernd Kohlhase
+            </span>
+            <span class="text-sm text-slate-600">Kinder- &amp; Jugendmedizin in Hameln</span>
+          </div>
+        </a>
+
+        <!-- =========================
+          Desktop Actions (ab sm)
+          - Privatsprechstunde (Maria) mit Dropdown
+          - Jetzt anrufen (Bernd)
+          ========================== -->
+        <div class="hidden sm:flex items-center gap-3 relative">
+
+          <!-- ====== Maria: Privatsprechstunde Button + Dropdown-Karte ====== -->
+          <div class="relative group">
+            <!-- Button (immer sichtbar in der Header-Zeile) -->
+            <a
+              href="/maria-kohlhase.html#top"
+              class="inline-flex items-center rounded-full border border-white/70 bg-white/60 px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-white/80 focus:outline-none focus:ring-2 focus:ring-white/70"
+              aria-label="Zur Privatsprechstunde (Dr. Maria Kohlhase)">
+              Privatsprechstunde
+            </a>
+
+            <!-- Dropdown-Karte (erscheint bei Hover/Fokus) -->
+            <div
+              class="pointer-events-none absolute right-0 top-[calc(100%+10px)] w-[320px] opacity-0 translate-y-1 transition
+                     group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto
+                     group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
+              <div class="rounded-2xl bg-white/90 p-3 shadow-lg ring-1 ring-sky-100 backdrop-blur">
+                <p class="text-xs font-semibold text-slate-900">
+                  Privatsprechstunde
+                </p>
+                <p class="mt-0.5 text-xs text-slate-600 leading-snug">
+                  Ärztin Dr. med. Maria Kohlhase<br />
+                  Tätigkeitsschwerpunkt: Klassische Homöopathie
+                </p>
+
+                <a
+                  href="/maria-kohlhase.html#top"
+                  class="mt-2 inline-flex w-full justify-center rounded-xl border border-sky-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-sky-50">
+                  Zur Privatsprechstunde
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== Haupt-CTA: Anrufen ====== -->
+          <a
+            href="tel:+495151000000"
+            class="inline-flex items-center rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:shadow-lg hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-white/70">
+            Jetzt anrufen
+          </a>
+        </div>
+
+        <!-- =========================
+          Mobile Menu Button (nur < sm)
+          ========================== -->
+        <button
+          id="menuBtn"
+          class="sm:hidden p-2.5 rounded-xl bg-white/70 shadow border border-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-300"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- =========================
+        Mobile Menu Panel
+        - Links + Maria-Karte + Call Button
+        ========================== -->
+      <nav id="mobileMenu" class="hidden sm:hidden pb-4" aria-label="Mobiles Menü">
+        <div class="glass rounded-2xl border border-white/60 p-3 shadow-sm">
+          <div class="grid gap-2 text-sm">
+
+            <!-- Navigation Links -->
+            <a class="rounded-xl px-3 py-2 hover:bg-white/70" href="#leistungen">Leistungen</a>
+            <a class="rounded-xl px-3 py-2 hover:bg-white/70" href="#sprechzeiten">Sprechzeiten</a>
+            <a class="rounded-xl px-3 py-2 hover:bg-white/70" href="#kontakt">Kontakt</a>
+
+            <!-- ====== Maria-Karte im Burger-Menü (wie von dir gewünscht) ====== -->
+            <div class="rounded-2xl bg-white/70 p-3">
+              <p class="text-xs font-semibold text-slate-900">
+                Privatsprechstunde
+              </p>
+              <p class="mt-0.5 text-xs text-slate-600 leading-snug">
+                Ärztin Dr. med. Maria Kohlhase<br />
+                Tätigkeitsschwerpunkt: Klassische Homöopathie
+              </p>
+
+              <a
+                href="/maria-kohlhase.html#top"
+                class="mt-2 inline-flex w-full justify-center rounded-xl border border-sky-200 bg-white px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-sky-50">
+                Zur Privatsprechstunde
+              </a>
+            </div>
+
+            <!-- Call CTA -->
+            <a
+              class="mt-1 inline-flex justify-center rounded-xl bg-sky-500 px-3 py-2 font-semibold text-white shadow-md shadow-sky-200 hover:bg-sky-600"
+              href="tel:+495151000000">
+              Jetzt anrufen
+            </a>
+
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- =========================
+      HERO
+      ========================== -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/50 to-teal-50/50">
+      <!-- Deko: weiche Farbflächen -->
+      <div class="pointer-events-none absolute -right-10 top-10 h-40 w-40 rounded-full bg-teal-100/60 blur-3xl"></div>
+      <div class="pointer-events-none absolute -left-16 bottom-0 h-48 w-48 rounded-full bg-sky-100/70 blur-3xl"></div>
+
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center gap-12 py-10 sm:py-14 lg:flex-row lg:items-stretch lg:gap-16 lg:py-20">
+
+          <!-- ====== Hero Text ====== -->
+          <div class="flex-1 space-y-5 sm:space-y-6">
+            <span class="inline-flex items-center rounded-full bg-teal-100/80 px-3 py-1 text-xs font-medium text-teal-700">
+              ✨ Kinder- &amp; Jugendmedizin mit Herz
+            </span>
+
+            <h1 class="font-serif-kinder text-3xl sm:text-4xl lg:text-5xl">
+              Einfühlsame Medizin für Kinder &amp; Jugendliche in Hameln
+            </h1>
+
+            <p class="max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
+              In unserer Praxis begleiten wir Ihr Kind von der Geburt bis ins Jugendalter – mit Zeit, Ruhe
+              und moderner Medizin. Vorsorge, Impfungen, Akutsprechstunde und individuelle Beratung für die ganze Familie.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+              <a
+                href="#leistungen"
+                class="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300">
+                Leistungen ansehen
+              </a>
+              <a
+                href="#kontakt"
+                class="inline-flex items-center rounded-full border border-sky-200 bg-white/70 px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:border-sky-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-sky-200">
+                Kontakt &amp; Anfahrt
+              </a>
+            </div>
+
+            <div class="mt-4 space-y-1 text-xs text-slate-500">
+              <p>✔ Gesetzlich &amp; privat versichert</p>
+              <p>✔ Zentrale Lage – Fröbelweg 4, 31785 Hameln</p>
+            </div>
+          </div>
+
+          <!-- ====== Hero Visual Card ====== -->
+          <div class="flex-1">
+            <div class="glass float-soft relative mx-auto max-w-md rounded-3xl border border-white/60 p-4 shadow-xl shadow-sky-100 sm:p-5">
+              <div class="relative overflow-hidden rounded-2xl bg-gradient-to-tr from-sky-100 via-teal-50 to-emerald-50">
+                <img
+                  src="images/doktor.webp"
+                  alt="Kinderarzt untersucht ein Kind in ruhiger Atmosphäre"
+                  class="h-56 w-full object-cover sm:h-64"
+                  width="960"
+                  height="540"
+                  loading="eager"
+                  decoding="async" />
+              </div>
+
+              <div class="absolute right-4 top-4 rounded-2xl bg-white/90 px-3 py-2 text-xs shadow-md sm:right-5 sm:top-5">
+                <p class="text-[10px] uppercase text-slate-400">Erfahrung</p>
+                <p class="text-sm font-semibold text-sky-600">15+ Jahre</p>
+              </div>
+
+              <div class="mt-4 grid gap-3 text-xs text-slate-600 sm:grid-cols-3">
+                <div class="rounded-2xl bg-sky-50 px-3 py-2.5">
+                  <p class="font-semibold text-sky-700">Vorsorge U1–J2</p>
+                  <p>Entwicklung im Blick</p>
+                </div>
+                <div class="rounded-2xl bg-teal-50 px-3 py-2.5">
+                  <p class="font-semibold text-teal-700">Impfungen</p>
+                  <p>Nach STIKO</p>
+                </div>
+                <div class="rounded-2xl bg-emerald-50 px-3 py-2.5">
+                  <p class="font-semibold text-emerald-700">Akutsprechstunde</p>
+                  <p>Schnelle Hilfe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /flex -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- =========================
+      SPRECHZEITEN
+      ========================== -->
+    <section id="sprechzeiten" class="bg-white py-10 sm:py-14">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 text-center">
+          <h2 class="text-2xl sm:text-3xl">Sprechzeiten</h2>
+          <p class="mt-2 text-sm text-slate-500">Planungssicherheit für Ihren Praxisbesuch</p>
+        </div>
+
+        <div class="glass mx-auto max-w-4xl rounded-3xl border border-sky-100 px-4 py-5 shadow-sm sm:px-6 sm:py-6">
+          <dl class="space-y-2 text-sm sm:text-base">
+            <div class="flex items-center justify-between gap-4">
+              <dt class="font-medium text-slate-800">Montag</dt>
+              <dd class="text-slate-600">08:30–12:00 &nbsp; | &nbsp; 15:00–18:00</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="font-medium text-slate-800">Dienstag</dt>
+              <dd class="text-slate-600">08:30–12:00 &nbsp; | &nbsp; 15:00–18:00</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="font-medium text-slate-800">Mittwoch</dt>
+              <dd class="text-slate-600">08:30–12:00</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="font-medium text-slate-800">Donnerstag</dt>
+              <dd class="text-slate-600">08:30–12:00 &nbsp; | &nbsp; 15:00–18:00</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="font-medium text-slate-800">Freitag</dt>
+              <dd class="text-slate-600">08:30–12:00</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="font-medium text-slate-800">Samstag</dt>
+              <dd class="text-slate-400">Geschlossen</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <dt class="font-medium text-slate-800">Sonntag</dt>
+              <dd class="text-slate-400">Geschlossen</dd>
+            </div>
+          </dl>
+
+          <p class="mt-4 text-xs text-slate-500">
+            Bitte beachten Sie: Für planbare Untersuchungen und Impfungen vereinbaren Sie nach Möglichkeit
+            einen Termin telefonisch.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+      LEISTUNGEN
+      ========================== -->
+    <section id="leistungen" class="bg-white py-10 sm:py-14">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 text-center">
+          <h2 class="text-2xl sm:text-3xl">Leistungen</h2>
+          <p class="mt-2 text-sm text-slate-500">Unser Spektrum – verständlich, einfühlsam und praxisnah</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <!-- 1) Vorsorge -->
+          <article class="flex flex-col rounded-3xl bg-white p-4 shadow-sm ring-1 ring-sky-100/70 transition hover:shadow-md hover:-translate-y-0.5 duration-300">
+            <div class="mb-3 overflow-hidden rounded-2xl bg-sky-50/80">
+              <img src="images/u1.webp"
+                alt="Vorsorgeuntersuchungen U1 bis J2 in der Kinderarztpraxis in Hameln"
+                class="aspect-video w-full object-cover"
+                width="960" height="540" loading="lazy" decoding="async" />
+            </div>
+            <h3 class="text-sm font-semibold text-slate-900 sm:text-base">Vorsorgeuntersuchungen</h3>
+            <p class="mt-1 text-xs font-medium text-sky-700">U1 bis J2 – Entwicklung im Blick</p>
+            <p class="mt-2 text-xs leading-relaxed text-slate-600">
+              Regelmäßige Vorsorge hilft, Entwicklung früh zu begleiten und Fragen in Ruhe zu klären.
+            </p>
+            <details class="mt-3 group">
+              <summary class="cursor-pointer list-none text-xs font-medium text-sky-600 hover:text-sky-700 transition focus:outline-none">
+                <span class="group-open:hidden">Mehr erfahren ↓</span>
+                <span class="hidden group-open:inline">Weniger anzeigen ↑</span>
+              </summary>
+              <div class="mt-3 space-y-2 text-xs text-slate-600">
+                <p>
+                  Wir führen alle vorgesehenen Vorsorgeuntersuchungen von der Geburt bis ins Jugendalter durch
+                  und achten u. a. auf Wachstum, Motorik, Sprache, Verhalten sowie Sehen und Hören.
+                </p>
+                <p>
+                  Bitte bringen Sie das <strong>gelbe Vorsorgeheft</strong> und – falls vorhanden – den
+                  <strong>Impfpass</strong> mit.
+                  Notieren Sie Fragen (Schlaf, Ernährung, Medien, Kita/Schule), damit nichts vergessen wird.
+                </p>
+                <p class="font-medium text-sky-600">
+                  Tipp: Wenn Sie Befunde/Arztbriefe haben, bringen Sie diese gern mit.
+                </p>
+              </div>
+            </details>
+          </article>
+
+          <!-- 2) Impfungen -->
+          <article class="flex flex-col rounded-3xl bg-white p-4 shadow-sm ring-1 ring-sky-100/70 transition hover:shadow-md hover:-translate-y-0.5 duration-300">
+            <div class="mb-3 overflow-hidden rounded-2xl bg-sky-50/80">
+              <img src="images/impfungen.webp"
+                alt="Kinderimpfungen nach STIKO-Empfehlungen in Hameln"
+                class="aspect-video w-full object-cover"
+                width="960" height="540" loading="lazy" decoding="async" />
+            </div>
+            <h3 class="text-sm font-semibold text-slate-900 sm:text-base">Impfungen</h3>
+            <p class="mt-1 text-xs font-medium text-sky-700">Nach Empfehlungen der STIKO</p>
+            <p class="mt-2 text-xs leading-relaxed text-slate-600">
+              Wir beraten individuell und impfen behutsam – mit Zeit für Eltern und Kind.
+            </p>
+            <details class="mt-3 group">
+              <summary class="cursor-pointer list-none text-xs font-medium text-sky-600 hover:text-sky-700 transition focus:outline-none">
+                <span class="group-open:hidden">Mehr erfahren ↓</span>
+                <span class="hidden group-open:inline">Weniger anzeigen ↑</span>
+              </summary>
+              <div class="mt-3 space-y-2 text-xs text-slate-600">
+                <p>
+                  Vor jeder Impfung klären wir über Nutzen, mögliche Impfreaktionen und den optimalen Zeitpunkt auf.
+                  Bitte bringen Sie den <strong>Impfpass</strong> mit.
+                </p>
+                <p>
+                  Auch <strong>Auffrisch-, Nachhol- und Reiseimpfungen</strong> sind möglich – wir prüfen gemeinsam,
+                  was sinnvoll ist.
+                </p>
+                <p class="font-medium text-sky-600">Unser Ziel: Sicherheit, Transparenz und Vertrauen.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- 3) Akutsprechstunde -->
+          <article class="flex flex-col rounded-3xl bg-white p-4 shadow-sm ring-1 ring-sky-100/70 transition hover:shadow-md hover:-translate-y-0.5 duration-300">
+            <div class="mb-3 overflow-hidden rounded-2xl bg-sky-50/80">
+              <img src="images/Akutsprechstunde.webp"
+                alt="Akutsprechstunde für Kinder in Hameln – schnelle Hilfe"
+                class="aspect-video w-full object-cover"
+                width="960" height="540" loading="lazy" decoding="async" />
+            </div>
+            <h3 class="text-sm font-semibold text-slate-900 sm:text-base">Akutsprechstunde</h3>
+            <p class="mt-1 text-xs font-medium text-sky-700">Schnelle Hilfe bei Bedarf</p>
+            <p class="mt-2 text-xs leading-relaxed text-slate-600">
+              Bei akuten Beschwerden sind wir für Ihr Kind da – ruhig, einfühlsam und strukturiert.
+            </p>
+            <details class="mt-3 group">
+              <summary class="cursor-pointer list-none text-xs font-medium text-sky-600 hover:text-sky-700 transition focus:outline-none">
+                <span class="group-open:hidden">Mehr erfahren ↓</span>
+                <span class="hidden group-open:inline">Weniger anzeigen ↑</span>
+              </summary>
+              <div class="mt-3 space-y-2 text-xs text-slate-600">
+                <p>
+                  Bitte rufen Sie möglichst vorher an, damit wir Sie passend einplanen können und
+                  Wartezeiten reduzieren.
+                </p>
+                <p class="font-medium text-sky-600">
+                  Notfall: 112 · Ärztlicher Bereitschaftsdienst außerhalb der Zeiten: 116 117
+                </p>
+              </div>
+            </details>
+          </article>
+
+          <!-- 4) Entwicklungsdiagnostik -->
+          <article class="flex flex-col rounded-3xl bg-white p-4 shadow-sm ring-1 ring-sky-100/70 transition hover:shadow-md hover:-translate-y-0.5 duration-300">
+            <div class="mb-3 overflow-hidden rounded-2xl bg-sky-50/80">
+              <img src="images/Entwicklungsdiagnostik.webp"
+                alt="Entwicklungsdiagnostik für Kinder – Motorik, Sprache und Verhalten"
+                class="aspect-video w-full object-cover"
+                width="960" height="540" loading="lazy" decoding="async" />
+            </div>
+            <h3 class="text-sm font-semibold text-slate-900 sm:text-base">Entwicklungsdiagnostik</h3>
+            <p class="mt-1 text-xs font-medium text-sky-700">Motorik, Sprache, Verhalten</p>
+            <p class="mt-2 text-xs leading-relaxed text-slate-600">
+              Wenn Sie sich Sorgen machen, schauen wir gemeinsam genauer hin – ohne Stress, mit Plan.
+            </p>
+            <details class="mt-3 group">
+              <summary class="cursor-pointer list-none text-xs font-medium text-sky-600 hover:text-sky-700 transition focus:outline-none">
+                <span class="group-open:hidden">Mehr erfahren ↓</span>
+                <span class="hidden group-open:inline">Weniger anzeigen ↑</span>
+              </summary>
+              <div class="mt-3 space-y-2 text-xs text-slate-600">
+                <p>
+                  Wir beurteilen altersgerecht Entwicklungsschritte und besprechen Ergebnisse verständlich.
+                  Bei Bedarf koordinieren wir weitere Untersuchungen oder Therapien.
+                </p>
+                <p class="font-medium text-sky-600">
+                  Ziel: früh unterstützen – individuell und alltagsnah.
+                </p>
+              </div>
+            </details>
+          </article>
+
+          <!-- 5) Beratung für Eltern -->
+          <article class="flex flex-col rounded-3xl bg-white p-4 shadow-sm ring-1 ring-sky-100/70 transition hover:shadow-md hover:-translate-y-0.5 duration-300">
+            <div class="mb-3 overflow-hidden rounded-2xl bg-sky-50/80">
+              <img src="images/eltern beratung.webp"
+                alt="Beratung für Eltern – Ernährung, Schlaf, Entwicklung und Alltag"
+                class="aspect-video w-full object-cover"
+                width="960" height="540" loading="lazy" decoding="async" />
+            </div>
+            <h3 class="text-sm font-semibold text-slate-900 sm:text-base">Beratung für Eltern</h3>
+            <p class="mt-1 text-xs font-medium text-sky-700">Ernährung, Schlaf, Pubertät</p>
+            <p class="mt-2 text-xs leading-relaxed text-slate-600">
+              Von Stillen bis Schule – wir beraten medizinisch fundiert und praxisnah.
+            </p>
+            <details class="mt-3 group">
+              <summary class="cursor-pointer list-none text-xs font-medium text-sky-600 hover:text-sky-700 transition focus:outline-none">
+                <span class="group-open:hidden">Mehr erfahren ↓</span>
+                <span class="hidden group-open:inline">Weniger anzeigen ↑</span>
+              </summary>
+              <div class="mt-3 space-y-2 text-xs text-slate-600">
+                <p>
+                  Themen: Stillen/Beikost, häufige Infekte, Schlafprobleme, Medien, Schulstress,
+                  Wachstum/Übergewicht sowie seelische Belastungen.
+                </p>
+                <p class="font-medium text-sky-600">
+                  Wir nehmen uns Zeit – in verständlicher Sprache.
+                </p>
+              </div>
+            </details>
+          </article>
+
+          <!-- 6) Allergologie -->
+          <article class="flex flex-col rounded-3xl bg-white p-4 shadow-sm ring-1 ring-sky-100/70 transition hover:shadow-md hover:-translate-y-0.5 duration-300">
+            <div class="mb-3 overflow-hidden rounded-2xl bg-sky-50/80">
+              <img src="images/alergi.webp"
+                alt="Allergologie für Kinder – Heuschnupfen, Asthma und Hautreaktionen"
+                class="aspect-video w-full object-cover"
+                width="960" height="540" loading="lazy" decoding="async" />
+            </div>
+            <h3 class="text-sm font-semibold text-slate-900 sm:text-base">Allergologie</h3>
+            <p class="mt-1 text-xs font-medium text-sky-700">Diagnostik &amp; Behandlung</p>
+            <p class="mt-2 text-xs leading-relaxed text-slate-600">
+              Bei Allergieverdacht klären wir Ursachen und beraten zu Behandlung und Alltagssicherheit.
+            </p>
+            <details class="mt-3 group">
+              <summary class="cursor-pointer list-none text-xs font-medium text-sky-600 hover:text-sky-700 transition focus:outline-none">
+                <span class="group-open:hidden">Mehr erfahren ↓</span>
+                <span class="hidden group-open:inline">Weniger anzeigen ↑</span>
+              </summary>
+              <div class="mt-3 space-y-2 text-xs text-slate-600">
+                <p>
+                  Wir besprechen Symptome, mögliche Auslöser und nächste Schritte.
+                  Bitte bringen Sie – wenn möglich – eine Symptomliste und vorhandene Befunde mit.
+                </p>
+                <p class="font-medium text-sky-600">
+                  Ziel: Beschwerden reduzieren und den Alltag sicher gestalten.
+                </p>
+              </div>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+      KONTAKT & ANFAHRT
+      ========================== -->
+    <section id="kontakt" class="bg-white py-12 sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+
+          <!-- Linke Spalte: Kontaktdaten -->
+          <div>
+            <h2 class="text-2xl sm:text-3xl">Kontakt &amp; Anfahrt</h2>
+            <p class="mt-2 text-sm text-slate-500">
+              So erreichen Sie unsere Kinder- und Jugendarztpraxis in Hameln.
+            </p>
+
+            <dl class="mt-6 space-y-4 text-sm">
+              <div>
+                <dt class="text-xs font-semibold uppercase text-slate-400">Adresse</dt>
+                <dd class="text-slate-700">
+                  Fröbelweg 4<br />
+                  31785 Hameln
+                </dd>
+              </div>
+
+              <div>
+                <dt class="text-xs font-semibold uppercase text-slate-400">Telefon</dt>
+                <dd>
+                  <a href="tel:+495151000000" class="font-medium text-sky-700 hover:underline">
+                    05151 / 000000
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            <!-- Parken Hinweis -->
+            <div class="mt-6 rounded-2xl border border-sky-100 bg-sky-50/70 p-4 text-sm text-slate-700">
+              <p class="font-semibold text-slate-900">Parken (Tipp für Eltern)</p>
+              <ul class="mt-2 list-disc pl-5 space-y-1 text-slate-600">
+                <li>
+                  <strong>Tiefgarage Stockhof / Rattenfänger-Halle</strong> (Am Stockhof) – viele Stellplätze.
+                  Von dort gibt es einen <strong>unterirdischen Ausgang Richtung Ostertorwall</strong>.
+                  Die Praxis erreichen Sie in <strong>wenigen Minuten zu Fuß</strong>.
+                </li>
+                <li>
+                  In unmittelbarer Praxisnähe sind weitere Parkmöglichkeiten vorhanden,
+                  jedoch sind die Plätze teilweise begrenzt.
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="tel:+495151000000"
+                class="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300">
+                Jetzt anrufen
+              </a>
+
+              <a href="https://www.google.com/maps?q=Fr%C3%B6belweg+4,+31785+Hameln"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center rounded-full border border-sky-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:border-sky-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-200">
+                Route planen
+              </a>
+            </div>
+          </div>
+
+          <!-- Rechte Spalte: Google Map -->
+          <div class="rounded-3xl border border-sky-100 bg-white p-3 shadow-sm">
+            <div class="overflow-hidden rounded-2xl">
+              <iframe
+                title="Google Karte – Praxis Fröbelweg 4, Hameln"
+                class="h-72 w-full sm:h-80"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Fr%C3%B6belweg%204,%2031785%20Hameln&output=embed">
+              </iframe>
+            </div>
+            <p class="mt-3 text-xs text-slate-500">
+              Tipp: Die Tiefgarage Stockhof / Rattenfänger-Halle bietet viele Stellplätze und einen
+              unterirdischen Ausgang Richtung Ostertorwall.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+      FOOTER – clean, no card, no address
+      ========================== -->
+    <footer class="w-full border-t border-sky-200 bg-sky-100">
+      <div class="mx-auto max-w-7xl px-4 py-6">
+
+        <!-- Zeile 1: Branding + Legal -->
+        <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+          <div class="flex items-center gap-3">
+            <img
+              src="images/2[1].webp"
+              alt="Praxis Logo"
+              class="h-10 w-10 rounded-xl bg-white object-contain p-1 ring-1 ring-sky-200 shadow-sm"
+              width="40"
+              height="40"
+              loading="lazy"
+              decoding="async" />
+            <div class="leading-tight">
+              <p class="text-sm font-semibold text-slate-900">Praxis Dr. med. Bernd Kohlhase</p>
+              <p class="text-xs text-slate-600">Kinder- &amp; Jugendmedizin · Hameln</p>
+            </div>
+          </div>
+
+          <!-- Rechtliches -->
+          <nav class="flex gap-4 text-xs" aria-label="Rechtliches">
+            <a href="/impressum.html" class="font-medium text-slate-700 hover:text-sky-700 transition">Impressum</a>
+            <a href="/datenschutz.html" class="font-medium text-slate-700 hover:text-sky-700 transition">Datenschutz</a>
+          </nav>
+        </div>
+
+        <!-- Divider -->
+        <div class="my-4 h-px w-full bg-sky-300/60"></div>
+
+        <!-- Copyright -->
+        <p class="text-center text-[11px] text-slate-600">
+          © <span id="year"></span> Praxis Dr. med. Bernd Kohlhase · Alle Rechte vorbehalten
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- =========================
+    Tiny JS
+    - Jahr automatisch setzen
+    - Mobile Menü (Burger) toggeln
+    ========================== -->
+  <script>
+    // Aktuelles Jahr in den Footer schreiben
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Mobile Menü: Öffnen/Schließen
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("mobileMenu");
+
+    if (btn && menu) {
+      btn.addEventListener("click", () => {
+        const isOpen = !menu.classList.contains("hidden");
+        menu.classList.toggle("hidden");
+        btn.setAttribute("aria-expanded", String(!isOpen));
+      });
+
+      // Menü schließen, sobald ein Link geklickt wird
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.add("hidden");
+          btn.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  </script>
+</body>
+</html>
