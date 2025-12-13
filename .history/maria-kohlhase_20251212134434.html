@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="de" class="h-full scroll-smooth">
+<head>
+  <!-- =========================
+       Basics
+  ========================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dr. med. Maria Kohlhase – Privatsprechstunde | Hameln</title>
+  <meta
+    name="description"
+    content="Privatsprechstunde Dr. med. Maria Kohlhase in Hameln. Ärztin – Tätigkeitsschwerpunkt Klassische Homöopathie. Termine nach Vereinbarung."
+  />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CDN (MVP ok) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --font-serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      color: #1e293b; /* slate-800 */
+      background: #fdfcfb;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      color: #0f172a; /* slate-900 */
+      letter-spacing: 0;
+    }
+
+    h1 { font-weight: 700; line-height: 1.2; }
+    h2 { font-weight: 700; line-height: 1.25; }
+    h3 { font-weight: 400; line-height: 1.3; }
+    h4 { font-weight: 400; }
+
+    .font-serif-kinder { font-family: var(--font-serif); }
+
+    .glass {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    summary::-webkit-details-marker { display: none; }
+  </style>
+</head>
+
+<body class="min-h-full text-slate-800">
+  <!-- =========================
+       HEADER (wie Kinderarzt)
+  ========================== -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-sky-200 via-teal-200 to-emerald-200 backdrop-blur-xl border-b border-teal-100/70">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo + Text -->
+        <a href="/index.html#top" class="flex items-center gap-5" aria-label="Zur Hauptpraxis">
+          <!-- TODO: Ersetze durch Maria-Logo -->
+          <img
+            src="images/maria-logo.webp"
+            alt="Logo Dr. med. Maria Kohlhase"
+            class="h-14 w-14 sm:h-16 sm:w-16 object-contain rounded-full bg-white/50 p-1 shadow-lg shadow-sky-100/40 ring-1 ring-white/60"
+            width="64" height="64" loading="eager" decoding="async"
+          />
+          <div class="flex flex-col justify-center leading-snug">
+            <span class="text-[1.05rem] sm:text-[1.25rem] font-semibold text-slate-900 tracking-tight">
+              Dr. med. Maria Kohlhase
+            </span>
+            <span class="text-sm text-slate-600">Privatsprechstunde · Hameln</span>
+          </div>
+        </a>
+
+        <!-- Desktop CTA -->
+        <a
+          href="tel:+4951513488"
+          class="hidden sm:inline-flex items-center rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:shadow-lg hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-white/70">
+          Jetzt anrufen
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="menuBtn"
+          class="sm:hidden p-2.5 rounded-xl bg-white/70 shadow border border-sky-100 focus:outline-none focus:ring-2 focus:ring-sky-300"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <nav id="mobileMenu" class="hidden sm:hidden pb-4" aria-label="Mobiles Menü">
+        <div class="glass rounded-2xl border border-white/60 p-3 shadow-sm">
+          <div class="grid gap-2 text-sm">
+            <a class="rounded-xl px-3 py-2 hover:bg-white/70" href="#schwerpunkt">Schwerpunkt</a>
+            <a class="rounded-xl px-3 py-2 hover:bg-white/70" href="#sprechzeiten">Sprechzeiten</a>
+            <a class="rounded-xl px-3 py-2 hover:bg-white/70" href="#kontakt">Kontakt</a>
+            <a class="rounded-xl px-3 py-2 hover:bg-white/70" href="/index.html#top">Zur Kinderarztpraxis</a>
+            <a
+              class="mt-1 inline-flex justify-center rounded-xl bg-sky-500 px-3 py-2 font-semibold text-white shadow-md shadow-sky-200 hover:bg-sky-600"
+              href="tel:+4951513488">
+              Jetzt anrufen
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- =========================
+         HERO (wie Kinderarzt, ruhiger)
+    ========================== -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/50 to-teal-50/50">
+      <div class="pointer-events-none absolute -right-10 top-10 h-40 w-40 rounded-full bg-teal-100/60 blur-3xl"></div>
+      <div class="pointer-events-none absolute -left-16 bottom-0 h-48 w-48 rounded-full bg-sky-100/70 blur-3xl"></div>
+
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center gap-12 py-10 sm:py-14 lg:flex-row lg:items-stretch lg:gap-16 lg:py-20">
+          <!-- Text -->
+          <div class="flex-1 space-y-5 sm:space-y-6">
+            <span class="inline-flex items-center rounded-full bg-sky-100/80 px-3 py-1 text-xs font-medium text-sky-700">
+              Privatsprechstunde · Ärztin
+            </span>
+
+            <h1 class="font-serif-kinder text-3xl sm:text-4xl lg:text-5xl">
+              Dr. med. Maria Kohlhase
+            </h1>
+
+            <p class="max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
+              Tätigkeitsschwerpunkt: <strong>Klassische Homöopathie</strong>.
+              Die Sprechstunde erfolgt als <strong>Privatsprechstunde</strong> und ausschließlich nach vorheriger Terminabsprache.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+              <a
+                href="#schwerpunkt"
+                class="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300">
+                Schwerpunkt ansehen
+              </a>
+              <a
+                href="#kontakt"
+                class="inline-flex items-center rounded-full border border-sky-200 bg-white/70 px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:border-sky-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-sky-200">
+                Kontakt
+              </a>
+            </div>
+
+            <div class="mt-4 space-y-1 text-xs text-slate-500">
+              <p>✔ Privatsprechstunde</p>
+              <p>✔ Termine nach Vereinbarung</p>
+              <p>✔ Fröbelweg 4, 31785 Hameln · Tel. 05151 / 3488</p>
+            </div>
+          </div>
+
+          <!-- Visual Card -->
+          <div class="flex-1">
+            <div class="glass relative mx-auto max-w-md rounded-3xl border border-white/60 p-4 shadow-xl shadow-sky-100 sm:p-5">
+              <div class="relative overflow-hidden rounded-2xl bg-gradient-to-tr from-sky-100 via-teal-50 to-emerald-50">
+                <!-- TODO: Ersetze durch Maria-Porträt oder Praxisfoto -->
+                <img
+                  src="images/maria-hero.webp"
+                  alt="Ärztin in ruhiger Praxisatmosphäre"
+                  class="h-56 w-full object-cover sm:h-64"
+                  width="960" height="540" loading="eager" decoding="async"
+                />
+              </div>
+
+              <div class="mt-4 rounded-2xl bg-white/80 p-4 text-xs text-slate-600">
+                <p class="font-semibold text-slate-900">Hinweis</p>
+                <p class="mt-1">
+                  Diese Seite informiert über die Privatsprechstunde. Sie ersetzt keine persönliche ärztliche Beratung.
+                  Es werden keine Heil- oder Erfolgsaussagen gemacht.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /flex -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- =========================
+         SCHWERPUNKT
+    ========================== -->
+    <section id="schwerpunkt" class="bg-white py-10 sm:py-14">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 text-center">
+          <h2 class="text-2xl sm:text-3xl">Schwerpunkt</h2>
+          <p class="mt-2 text-sm text-slate-500">Klassische Homöopathie · Privatsprechstunde</p>
+        </div>
+
+        <div class="mx-auto max-w-4xl rounded-3xl border border-sky-100 bg-sky-50/60 p-5 sm:p-6">
+          <p class="text-sm sm:text-base text-slate-700">
+            In der Privatsprechstunde liegt der Tätigkeitsschwerpunkt auf <strong>Klassischer Homöopathie</strong>.
+            Im Mittelpunkt stehen eine ausführliche Anamnese, ein ruhiges Gespräch und eine individuelle ärztliche Einschätzung.
+          </p>
+
+          <details class="mt-4 group">
+            <summary class="cursor-pointer list-none text-sm font-medium text-sky-700 hover:text-sky-800 transition">
+              <span class="group-open:hidden">Was ist für den Termin hilfreich? ↓</span>
+              <span class="hidden group-open:inline">Weniger anzeigen ↑</span>
+            </summary>
+            <div class="mt-3 space-y-2 text-sm text-slate-600">
+              <p><strong>Bitte mitbringen (wenn vorhanden):</strong> Vorbefunde/Arztbriefe, Medikamentenplan, Impfpass, relevante Laborwerte.</p>
+              <p><strong>Hilfreich:</strong> kurze Notizen zu Beschwerden (seit wann, wann besser/schlechter, Begleitsymptome).</p>
+              <p class="text-xs text-slate-500">Hinweis: Inhalte dienen der Information und ersetzen nicht das ärztliche Gespräch.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         SPRECHZEITEN (wie Schild, editierbar)
+    ========================== -->
+    <section id="sprechzeiten" class="bg-white py-10 sm:py-14">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 text-center">
+          <h2 class="text-2xl sm:text-3xl">Sprechzeiten</h2>
+          <p class="mt-2 text-sm text-slate-500">Nur nach vorheriger Terminabsprache</p>
+        </div>
+
+        <div class="glass mx-auto max-w-4xl rounded-3xl border border-sky-100 px-4 py-5 shadow-sm sm:px-6 sm:py-6">
+          <dl class="space-y-2 text-sm sm:text-base">
+            <div class="flex items-center justify-between gap-4">
+              <dt class="font-medium text-slate-800">Montag – Freitag</dt>
+              <dd class="text-slate-600">09:00–12:00</dd>
+            </div>
+          </dl>
+
+          <p class="mt-4 text-xs text-slate-500">
+            Terminvergabe ausschließlich nach telefonischer Vereinbarung.
+          </p>
+
+          <div class="mt-4 flex flex-wrap justify-center gap-3 sm:justify-start">
+            <a
+              href="tel:+4951513488"
+              class="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300">
+              05151 / 3488
+            </a>
+            <a
+              href="/index.html#sprechzeiten"
+              class="inline-flex items-center rounded-full border border-sky-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:border-sky-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-200">
+              Kinderarzt-Sprechzeiten ansehen
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         KONTAKT (kurz + Map Link)
+    ========================== -->
+    <section id="kontakt" class="bg-white py-10 pb-16 sm:py-14 sm:pb-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div>
+            <h2 class="text-2xl sm:text-3xl">Kontakt</h2>
+            <p class="mt-2 text-sm text-slate-500">
+              Privatsprechstunde – Termine nach Vereinbarung.
+            </p>
+
+            <dl class="mt-5 space-y-3 text-sm">
+              <div>
+                <dt class="text-xs font-semibold uppercase text-slate-400">Adresse</dt>
+                <dd class="text-slate-700">
+                  Fröbelweg 4<br />
+                  31785 Hameln
+                </dd>
+              </div>
+
+              <div>
+                <dt class="text-xs font-semibold uppercase text-slate-400">Telefon</dt>
+                <dd class="text-slate-700">
+                  <a href="tel:+4951513488" class="font-medium text-sky-700 hover:underline">
+                    05151 / 3488
+                  </a>
+                </dd>
+              </div>
+            </dl>
+
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a
+                href="tel:+4951513488"
+                class="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300">
+                Jetzt anrufen
+              </a>
+              <a
+                href="https://www.google.com/maps?q=Fr%C3%B6belweg+4,+31785+Hameln"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center rounded-full border border-sky-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:border-sky-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-200">
+                Route planen
+              </a>
+            </div>
+
+            <p class="mt-4 text-xs text-slate-500">
+              Hinweis: Diese Seite dient der Information. Medizinische Entscheidungen erfolgen im persönlichen ärztlichen Gespräch.
+            </p>
+          </div>
+
+          <div class="glass rounded-3xl border border-sky-100 p-4 shadow-sm">
+            <div class="overflow-hidden rounded-2xl bg-sky-50/80">
+              <!-- Optional: Praxisfoto / Eingang -->
+              <img
+                src="images/maria-praxis.webp"
+                alt="Praxis in Hameln – ruhige Umgebung"
+                class="aspect-video w-full object-cover"
+                width="960" height="540" loading="lazy" decoding="async"
+              />
+            </div>
+            <p class="mt-3 text-xs text-slate-500">
+              Tipp: Für allgemeine Kinder- und Jugendmedizin besuchen Sie die Hauptseite der Praxis.
+              <a href="/index.html#top" class="text-sky-700 hover:underline">Zur Kinderarztpraxis</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================
+       FOOTER (wie Kinderarzt, clean)
+  ========================== -->
+  <footer class="w-full border-t border-sky-200 bg-sky-100">
+    <div class="mx-auto max-w-7xl px-4 py-6">
+      <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+        <div class="flex items-center gap-3">
+          <img
+            src="images/maria-logo.webp"
+            alt="Logo Dr. med. Maria Kohlhase"
+            class="h-10 w-10 rounded-xl bg-white object-contain p-1 ring-1 ring-sky-200 shadow-sm"
+            width="40" height="40" loading="lazy" decoding="async"
+          />
+          <div class="leading-tight">
+            <p class="text-sm font-semibold text-slate-900">Dr. med. Maria Kohlhase</p>
+            <p class="text-xs text-slate-600">Privatsprechstunde · Hameln</p>
+          </div>
+        </div>
+
+        <nav class="flex gap-4 text-xs">
+          <a href="/impressum.html" class="font-medium text-slate-700 hover:text-sky-700 transition">Impressum</a>
+          <a href="/datenschutz.html" class="font-medium text-slate-700 hover:text-sky-700 transition">Datenschutz</a>
+        </nav>
+      </div>
+
+      <div class="my-4 h-px w-full bg-sky-300/60"></div>
+
+      <p class="text-center text-[11px] text-slate-600">
+        © <span id="year"></span> Dr. med. Maria Kohlhase · Alle Rechte vorbehalten
+      </p>
+    </div>
+  </footer>
+
+  <!-- =========================
+       Tiny JS: year + mobile menu toggle (nur EINMAL)
+  ========================== -->
+  <script>
+    // Year
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("mobileMenu");
+
+    if (btn && menu) {
+      btn.addEventListener("click", () => {
+        const isOpen = !menu.classList.contains("hidden");
+        menu.classList.toggle("hidden");
+        btn.setAttribute("aria-expanded", String(!isOpen));
+      });
+
+      // Close menu when clicking a link
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.add("hidden");
+          btn.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  </script>
+</body>
+</html>
