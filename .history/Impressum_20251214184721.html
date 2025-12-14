@@ -178,15 +178,26 @@
     </main>
 
     <!-- Footer (ohne Logo, wie "Maria"-Look, zentriert & sauber) -->
-    <footer class="w-full border-t border-white/50 bg-gradient-to-r from-sky-200 via-teal-200 to-emerald-200">
-        <div class="mx-auto max-w-4xl px-6 py-8">
-            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs">
-                <p class="text-slate-800/80">
+    <footer class="border-t border-slate-100 bg-white">
+        <div class="max-w-4xl mx-auto px-6 py-10">
+            <div class="flex flex-col items-center gap-3 text-center">
+                <p class="text-sm font-semibold text-slate-900">Praxis Dr. med. Bernd Kohlhase</p>
+                <p class="text-xs text-slate-600">Kinder- &amp; Jugendmedizin · Hameln</p>
+
+                <div class="mt-2 flex items-center justify-center gap-5 text-xs">
+                    <a href="/impressum.html"
+                        class="font-medium text-slate-700 hover:text-sky-800 transition">Impressum</a>
+                    <a href="/datenschutz.html"
+                        class="font-medium text-slate-700 hover:text-sky-800 transition">Datenschutz</a>
+                </div>
+
+                <div class="mt-6 h-px w-full bg-slate-100"></div>
+
+                <div class="mt-3 text-[11px] text-slate-500">
                     © <span id="year"></span> Praxis für Kinder- und Jugendmedizin · Hameln
-                </p>
-                <p class="text-slate-800/70">
+                    <span class="mx-2 text-slate-300">•</span>
                     Stand: <span id="date"></span>
-                </p>
+                </div>
             </div>
         </div>
     </footer>
