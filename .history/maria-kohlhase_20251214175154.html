@@ -450,148 +450,84 @@
 
     <div class="divider"><div></div></div>
 
-    <!-- SPRECHZEITEN (красивая, компактная, не "пустая" на Desktop) -->
-    <section id="sprechzeiten" class="bg-white py-10 sm:py-14">
-      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="section-head">
-          <h2 class="text-2xl sm:text-3xl">Sprechzeiten</h2>
-          <p class="section-sub">Privatsprechstunde · nach vorheriger Terminabsprache</p>
-        </div>
+<!-- =========================
+SPRECHZEITEN + KONTAKT (EIN CONTAINER)
+========================== -->
+<section id="kontakt" class="bg-white py-14 sm:py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <div class="rounded-3xl border border-sky-100 bg-white p-6 sm:p-8 shadow-sm">
-          <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p class="text-sm font-semibold text-slate-900">Montag – Freitag</p>
-              <p class="mt-1 text-sm text-slate-600">
-                Telefonische Terminvereinbarung:
-                <a class="font-semibold text-sky-700 hover:underline" href="tel:+4951513488">05151 / 3488</a>
-              </p>
-              <p class="mt-3 text-xs text-slate-500">
-                Hinweis: Termine ausschließlich nach vorheriger Vereinbarung.
-              </p>
-            </div>
+    <!-- Head -->
+    <div class="mb-12 text-center">
+      <h2 class="text-2xl sm:text-3xl">Sprechzeiten & Kontakt</h2>
+      <p class="mt-2 text-sm text-slate-500">
+        Privatsprechstunde · Termine nach vorheriger Vereinbarung
+      </p>
+    </div>
 
-            <div class="rounded-2xl bg-sky-50 px-6 py-4 ring-1 ring-sky-100 text-center">
-              <p class="text-[11px] font-semibold uppercase tracking-wide text-sky-700">Sprechzeit</p>
-              <p class="mt-1 text-lg font-semibold text-slate-900">09:00 – 12:00</p>
+    <!-- Card -->
+    <div class="glass rounded-3xl border border-sky-100 p-6 sm:p-10 shadow-sm">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+
+        <!-- LEFT: Sprechzeiten -->
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900">Sprechzeiten</h3>
+
+          <div class="mt-4 space-y-2 text-sm sm:text-base">
+            <div class="flex items-center justify-between">
+              <span class="font-medium text-slate-800">Montag – Freitag</span>
+              <span class="text-slate-700 font-semibold">09:00 – 12:00</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <div class="divider"><div></div></div>
+          <p class="mt-4 text-sm text-slate-600">
+            Telefonische Terminvereinbarung:
+            <a href="tel:+4951513488" class="font-semibold text-sky-700 hover:underline">
+              05151 / 3488
+            </a>
+          </p>
 
-    <!-- KONTAKT & ANFAHRT -->
-<section id="kontakt" class="bg-white py-12 sm:py-16">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
-
-      <!-- LEFT: теперь это полноценная карточка сверху до низа -->
-      <div class="rounded-3xl border border-sky-100 bg-white p-6 sm:p-7 shadow-sm">
-
-        <div class="section-head mb-6 !text-left">
-          <h2 class="text-2xl sm:text-3xl">Kontakt &amp; Anfahrt</h2>
-          <p class="section-sub">
-            So erreichen Sie die Privatsprechstunde von Dr. med. Maria Kohlhase in Hameln.
+          <p class="mt-4 text-xs text-slate-500">
+            Hinweis: Termine ausschließlich nach vorheriger Vereinbarung.
           </p>
         </div>
 
-        <dl class="mt-6 space-y-4 text-sm">
-          <div>
-            <dt class="text-xs font-semibold uppercase text-slate-400">Adresse</dt>
-            <dd class="text-slate-700">
-              Fröbelweg 4<br />
-              31785 Hameln
-            </dd>
+        <!-- RIGHT: Kontakt + Karte -->
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900">Kontakt & Anfahrt</h3>
+
+          <p class="mt-3 text-sm text-slate-700">
+            Fröbelweg 4<br />
+            31785 Hameln
+          </p>
+
+          <div class="mt-4 overflow-hidden rounded-2xl border border-sky-100">
+            <iframe
+              title="Google Karte – Fröbelweg 4, Hameln"
+              class="h-64 w-full"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Fr%C3%B6belweg%204,%2031785%20Hameln&output=embed">
+            </iframe>
           </div>
 
-          <div>
-            <dt class="text-xs font-semibold uppercase text-slate-400">Telefon</dt>
-            <dd>
-              <a href="tel:+4951513488" class="font-medium text-sky-700 hover:underline">
-                05151 3488
-              </a>
-            </dd>
-          </div>
-        </dl>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="https://www.google.com/maps/search/?api=1&query=Fr%C3%B6belweg+4,+31785+Hameln"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center rounded-full border border-sky-200 bg-white px-4 py-2 text-sm font-medium text-slate-800 shadow-sm hover:bg-sky-50">
+              Route zur Praxis
+            </a>
 
-        <!-- NEU: Sprechzeiten внутри контакта (чтобы сверху не было пусто) -->
-        <div class="mt-6 rounded-2xl border border-sky-200/70 bg-sky-50/60 p-4 sm:p-5">
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Sprechzeiten</p>
-              <p class="mt-1 text-sm font-semibold text-slate-900">Montag – Freitag</p>
-              <p class="mt-1 text-sm text-slate-700">09:00 – 12:00</p>
-              <p class="mt-2 text-xs text-slate-500">
-                Privatsprechstunde · Termine ausschließlich nach vorheriger Vereinbarung.
-              </p>
-            </div>
-            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Tiefgarage+Stockhof+Hameln"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center rounded-full border border-sky-200 bg-white px-4 py-2 text-sm font-medium text-slate-800 shadow-sm hover:bg-sky-50">
+              Route zur Tiefgarage
+            </a>
           </div>
         </div>
 
-        <!-- Parken Hinweis (как было) -->
-        <div class="mt-6 rounded-2xl border border-sky-200/70 bg-sky-50 p-4 sm:p-5 text-sm">
-          <p class="text-sm font-semibold text-slate-900">Parken (Tipp für Eltern)</p>
-
-          <ul class="mt-2 list-disc pl-5 space-y-1.5 text-slate-700">
-            <li>
-              <strong class="text-slate-900">Tiefgarage Stockhof / Rattenfänger-Halle</strong>
-              <span class="font-medium text-slate-800">(Am Stockhof)</span> – viele Stellplätze.
-              <span class="font-medium text-slate-800">Unterirdischer Ausgang Richtung Ostertorwall</span>.
-              Die Praxis erreichen Sie in <span class="font-medium text-slate-800">wenigen Minuten zu Fuß</span>.
-            </li>
-            <li>
-              In unmittelbarer Praxisnähe sind weitere Parkmöglichkeiten vorhanden,
-              jedoch sind die Plätze teilweise begrenzt.
-            </li>
-          </ul>
-        </div>
-
-        <!-- CTA Buttons (как было) -->
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="tel:+4951513488"
-            class="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-sky-200 transition hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300">
-            Jetzt anrufen
-          </a>
-
-          <a href="https://www.google.com/maps/search/?api=1&query=Fr%C3%B6belweg+4,+31785+Hameln" target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center rounded-full border border-sky-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:border-sky-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-200">
-            Route zur Praxis
-          </a>
-
-          <a href="https://www.google.com/maps/search/?api=1&query=Tiefgarage+Stockhof+Hameln" target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center rounded-full border border-sky-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-800 shadow-sm transition hover:border-sky-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-200">
-            Route zur Tiefgarage
-          </a>
-        </div>
       </div>
-
-      <!-- RIGHT: карта (как было) -->
-      <div class="rounded-3xl border border-sky-100 bg-white p-3 shadow-sm">
-        <div class="overflow-hidden rounded-2xl">
-          <iframe title="Google Karte – Fröbelweg 4, Hameln" class="h-72 w-full sm:h-80" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Fr%C3%B6belweg%204,%2031785%20Hameln&output=embed"></iframe>
-        </div>
-
-        <p class="mt-3 text-xs font-medium text-slate-700 leading-relaxed">
-          Tipp für Eltern: Die <strong>Tiefgarage Stockhof / Rattenfänger-Halle</strong> bietet viele Stellplätze sowie
-          einen <strong>unterirdischen Ausgang Richtung Ostertorwall</strong>. Von dort erreichen Sie die Praxis in wenigen Minuten zu Fuß.
-        </p>
-
-        <p class="mt-2 text-xs">
-          <a href="https://www.google.com/maps/search/?api=1&query=Tiefgarage+Stockhof+Hameln" target="_blank"
-            rel="noopener noreferrer" class="font-medium text-sky-700 hover:underline">
-            Route zur Tiefgarage anzeigen
-          </a>
-        </p>
-      </div>
-
     </div>
+
   </div>
 </section>
 
