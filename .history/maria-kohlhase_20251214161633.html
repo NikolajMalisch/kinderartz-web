@@ -3,7 +3,7 @@
 
 <head>
     <!-- =========================
-        Basics / SEO
+      Basics / SEO
     ========================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -18,18 +18,18 @@
     <!-- <link rel="canonical" href="https://www.deine-domain.de/maria-kohlhase.html" /> -->
 
     <!-- =========================
-        Fonts (Performance: preconnect)
-    ========================== -->
+      Fonts (Performance: preconnect)
+  ========================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
 
-        <!-- =========================
-        Tailwind CDN (MVP ok)
-        Hinweis: In Production besser build + purge
-        ========================== -->
+    <!-- =========================
+      Tailwind CDN (MVP ok)
+      Hinweis: In Production besser build + purge
+  ========================== -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
@@ -90,52 +90,52 @@
         }
     </style>
 
-        <!-- =========================
+    <!-- =========================
       Tailwind "Utility Classes" (CDN-kompatibel)
       - Ein einheitlicher Karten-Look wie bei Dr. Bernd Kohlhase
       - Karten wirken ca. 10% "gewichtiger"/kontrastreicher
-        ========================== -->
+  ========================== -->
     <style type="text/tailwindcss">
         @layer components {
       /* Premium-Karten (wie bei Bernd) */
-    .card-praxis {
+      .card-praxis {
         @apply rounded-3xl bg-sky-50/80
-            shadow-md shadow-sky-200/30 ring-1 ring-sky-200/50
-            overflow-hidden transition duration-300;
-    }
-    .card-praxis:hover {
+               shadow-md shadow-sky-200/30 ring-1 ring-sky-200/50
+               overflow-hidden transition duration-300;
+      }
+      .card-praxis:hover {
         @apply -translate-y-0.5 shadow-lg shadow-sky-200/40;
-    }
+      }
 
       /* Bildblock für Karten */
-    .card-praxis-media {
+      .card-praxis-media {
         @apply h-40 bg-gradient-to-tr from-sky-100 via-teal-50 to-emerald-50;
-    }
-    .card-praxis-media img {
+      }
+      .card-praxis-media img {
         @apply h-full w-full object-cover;
-    }
+      }
 
       /* Kleine Step-Karten (Ablauf) – optional einheitlich */
-    .step-card {
+      .step-card {
         @apply rounded-3xl border border-sky-100 bg-sky-50/60 p-6 shadow-sm;
+      }
     }
-    }
-</style>
+  </style>
 </head>
 
 <body class="min-h-full text-slate-800">
 
-        <!-- =========================
-        Skip link (barrierearm)
-        ========================== -->
+    <!-- =========================
+      Skip link (barrierearm)
+  ========================== -->
     <a href="#content"
         class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow">
         Zum Inhalt springen
     </a>
 
-        <!-- =========================
-        HEADER (wie bei Bernd)
-        ========================== -->
+    <!-- =========================
+      HEADER (wie bei Bernd)
+  ========================== -->
     <header
         class="sticky top-0 z-50 bg-gradient-to-r from-sky-200 via-teal-200 to-emerald-200 backdrop-blur-xl border-b border-teal-100/70">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -488,6 +488,40 @@
                     </p>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- =========================
+        FAQ (minimal, damit Menü-Link passt)
+        Du kannst später erweitern.
+    ========================== -->
+        <section id="faq" class="bg-white py-12 sm:py-16">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="mb-10 text-center">
+                    <h2 class="text-2xl sm:text-3xl">FAQ</h2>
+                    <p class="mt-2 text-sm text-slate-500">Häufige Fragen – kurz beantwortet</p>
+                </div>
+
+                <div class="mx-auto max-w-4xl space-y-3">
+                    <details class="rounded-2xl border border-sky-100 bg-white p-5">
+                        <summary class="cursor-pointer list-none font-semibold text-slate-900">
+                            Benötige ich eine Überweisung?
+                        </summary>
+                        <p class="mt-2 text-sm text-slate-600">
+                            In der Privatsprechstunde erfolgt die Terminvereinbarung individuell. Bitte klären Sie
+                            offene Fragen telefonisch.
+                        </p>
+                    </details>
+
+                    <details class="rounded-2xl border border-sky-100 bg-white p-5">
+                        <summary class="cursor-pointer list-none font-semibold text-slate-900">
+                            Wie lange dauert ein Termin?
+                        </summary>
+                        <p class="mt-2 text-sm text-slate-600">
+                            Die Dauer hängt vom Anliegen ab. Bei der Terminabsprache wird ausreichend Zeit eingeplant.
+                        </p>
+                    </details>
+                </div>
             </div>
         </section>
 
