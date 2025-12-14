@@ -754,46 +754,43 @@
 
 
         <!-- ========================= FOOTER – clean, no card, no address ========================== -->
-<footer class="w-full border-t border-white/50 bg-gradient-to-r from-sky-200 via-teal-200 to-emerald-200">
-    <div class="mx-auto max-w-7xl px-4 py-6">
+    <footer class="w-full border-t border-white/50 bg-gradient-to-r from-sky-200 via-teal-200 to-emerald-200">
+        <div class="mx-auto max-w-7xl px-4 py-7">
 
-        <!-- Zeile 1 -->
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <!-- Zeile 1: Branding + Legal -->
+            <div class="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
 
-            <!-- Branding -->
-            <div class="flex items-center gap-3">
-                <img src="images/1.webp" alt="Praxis Logo" class="h-10 w-auto object-contain drop-shadow-sm" width="40"
-                    height="40" loading="lazy" decoding="async" />
-                <div class="leading-tight">
-                    <p class="text-sm font-semibold text-slate-900">
-                        Praxis Dr. med. Bernd Kohlhase
-                    </p>
-                    <p class="text-xs text-slate-700">
-                        Kinder- &amp; Jugendmedizin · Hameln
-                    </p>
+                <!-- Branding -->
+                <div class="flex items-center gap-3">
+                    <!-- Logo ohne Quadrat -->
+                    <img src="images/1.webp" alt="Praxis Logo" class="h-10 w-auto object-contain drop-shadow-sm" width="40"
+                        height="40" loading="lazy" decoding="async" />
+
+                    <div class="leading-tight">
+                        <p class="text-sm font-semibold text-slate-900">Praxis Dr. med. Bernd Kohlhase</p>
+                        <p class="text-xs text-slate-700">Kinder- &amp; Jugendmedizin · Hameln</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Legal -->
-            <nav class="flex gap-4 text-xs" aria-label="Rechtliches">
-                <a href="/impressum.html" class="font-medium text-slate-800 hover:text-sky-900 transition">
-                    Impressum
-                </a>
-                <a href="/datenschutz.html" class="font-medium text-slate-800 hover:text-sky-900 transition">
-                    Datenschutz
-                </a>
-            </nav>
+                <!-- Rechtliches -->
+                <nav class="flex gap-4 text-xs" aria-label="Rechtliches">
+                    <a href="/impressum.html" class="font-medium text-slate-800 hover:text-sky-900 transition">
+                        Impressum
+                    </a>
+                    <a href="/datenschutz.html" class="font-medium text-slate-800 hover:text-sky-900 transition">
+                        Datenschutz
+                    </a>
+                </nav>
+
+            <!-- Divider -->
+            <div class="my-5 h-px w-full bg-white/50"></div>
+
+            <!-- Copyright -->
+            <p class="text-center text-[11px] text-slate-800/80">
+                © <span id="year"></span> Praxis Dr. med. Bernd Kohlhase · Alle Rechte vorbehalten
+            </p>
         </div>
-
-        <!-- Divider -->
-        <div class="my-4 h-px w-full max-w-5xl mx-auto bg-white/40"></div>
-
-        <!-- Copyright -->
-        <p class="text-center text-[11px] text-slate-800/80">
-            © <span id="year"></span> Praxis Dr. med. Bernd Kohlhase · Alle Rechte vorbehalten
-        </p>
-    </div>
-</footer>
+    </footer>
 
 
         </main>
