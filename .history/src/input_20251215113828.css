@@ -1,0 +1,147 @@
+/* =========================================================
+    Tailwind v4 – Entry
+   ========================================================= */
+@import "tailwindcss";
+
+/* =========================================================
+    Design Tokens (ruhig, medizinisch, kinderfreundlich)
+   ========================================================= */
+:root{
+  /* Brand */
+  --brand: #0284C7;         /* sky-600 */
+  --brand-2: #0EA5E9;       /* sky-500 */
+  --mint: #10B981;          /* emerald-500 (sparsam!) */
+
+  /* Text */
+  --text: #0F172A;          /* slate-900 */
+  --muted: #475569;         /* slate-600 */
+
+  /* Surfaces / Borders */
+--bg: #ffffff;
+--surface: rgba(255,255,255,.85);
+--border: #DCEAF7;
+
+  /* Effects */
+--shadow-soft: 0 10px 30px rgba(2, 132, 199, 0.10);
+--ring: 0 0 0 4px rgba(2, 132, 199, 0.22);
+}
+
+/* =========================================================
+    Base (clean, lesbar, barrierearm)
+   ========================================================= */
+html{
+scroll-behavior: smooth;
+}
+
+body{
+color: var(--text);
+background: var(--bg);
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+/* Bessere Lesbarkeit für Eltern */
+p, li{
+line-height: 1.65;
+}
+
+/* Focus Styles (Keyboard) */
+:where(a, button, input, textarea, select):focus-visible{
+outline: none;
+box-shadow: var(--ring);
+border-radius: 14px;
+}
+
+/* Links (einheitlicher Ton) */
+a{
+color: var(--brand);
+text-underline-offset: 3px;
+}
+a:hover{
+  color: #0369A1; /* sky-700 */
+}
+
+/* =========================================================
+    Small utilities for your layout (optional use)
+   ========================================================= */
+.container-wide{
+width: 100%;
+padding-left: 1rem;
+padding-right: 1rem;
+}
+@media (min-width: 640px){
+.container-wide{ padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+@media (min-width: 1024px){
+.container-wide{ padding-left: 2.5rem; padding-right: 2.5rem; }
+}
+
+/* =========================================================
+    Premium UI helpers (use as classes if you want)
+   ========================================================= */
+.card-premium{
+border: 1px solid var(--border);
+background: var(--surface);
+  border-radius: 1.5rem; /* ~ rounded-3xl */
+box-shadow: var(--shadow-soft);
+backdrop-filter: blur(10px);
+}
+
+.btn-primary{
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: .5rem;
+border-radius: 9999px;
+padding: .75rem 1.25rem;
+font-weight: 700;
+color: white;
+background: linear-gradient(135deg, var(--brand-2), var(--brand));
+box-shadow: 0 10px 20px rgba(2,132,199,.18);
+  transition: transform .15s ease, filter .15s ease;
+}
+.btn-primary:hover{ filter: brightness(1.02); transform: translateY(-1px); }
+.btn-primary:active{ transform: translateY(0); }
+
+.btn-ghost{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 9999px;
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  background: rgba(255,255,255,.65);
+  border: 1px solid rgba(220,234,247,.9);
+  transition: background .15s ease, transform .15s ease;
+}
+.btn-ghost:hover{ background: rgba(255,255,255,.85); transform: translateY(-1px); }
+.btn-ghost:active{ transform: translateY(0); }
+
+/* Badges */
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem .7rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: .85rem;
+  color: #075985; /* sky-800 */
+  background: rgba(224,242,254,.8); /* sky-100 */
+  border: 1px solid rgba(186,230,253,.9); /* sky-200 */
+}
+
+/* =========================================================
+    Reduce heavy effects on low-end devices
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+}
+}
