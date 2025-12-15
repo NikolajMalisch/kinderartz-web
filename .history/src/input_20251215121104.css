@@ -1,0 +1,157 @@
+/* =========================================================
+   Tailwind v4 – Entry
+   ========================================================= */
+@import "tailwindcss";
+
+/* Tailwind v4: where to scan for class usage */
+@source "../*.html";
+@source "../**/*.html";
+@source "../**/*.{js,ts,vue}";
+
+/* =========================================================
+   Design Tokens (ruhig, medizinisch, kinderfreundlich)
+   ========================================================= */
+:root{
+  --brand:   #0369A1; /* sky-700 */
+  --brand-2: #0284C7; /* sky-600 */
+  --mint:    #10B981;
+
+  --text:  #0F172A;
+  --muted: #475569;
+
+  --bg:      #ffffff;
+  --surface: rgba(255,255,255,.85);
+  --border:  #DCEAF7;
+
+  --shadow-soft: 0 10px 30px rgba(3, 105, 161, 0.10);
+  --ring:        0 0 0 4px rgba(2, 132, 199, 0.20);
+}
+
+/* =========================================================
+   Base
+   ========================================================= */
+html{ scroll-behavior: smooth; }
+
+body{
+  color: var(--text);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p, li{ line-height: 1.65; }
+
+:where(a, button, input, textarea, select):focus-visible{
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: 14px;
+}
+
+a{
+  color: var(--brand);
+  text-underline-offset: 3px;
+}
+a:hover{ color: #075985; }
+
+/* =========================================================
+   Buttons (reusable)
+   ========================================================= */
+.btn-primary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 9999px;
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+  color: white;
+
+  background: linear-gradient(135deg, var(--brand-2), var(--brand));
+  box-shadow: 0 8px 18px rgba(3,105,161,.16);
+
+  transition: transform .15s ease, filter .15s ease;
+}
+.btn-primary:hover{ filter: brightness(1.02); transform: translateY(-1px); }
+.btn-primary:active{ transform: translateY(0); }
+
+.btn-ghost{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  border-radius: 9999px;
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(186,230,253,.9); /* sky-200 */
+  box-shadow: 0 2px 8px rgba(2,132,199,.06);
+
+  transition: background .15s ease, transform .15s ease, border-color .15s ease;
+}
+.btn-ghost:hover{
+  background: rgba(255,255,255,.90);
+  border-color: rgba(125,211,252,.95); /* sky-300 */
+  transform: translateY(-1px);
+}
+.btn-ghost:active{ transform: translateY(0); }
+
+/* =========================================================
+   IMPORTANT: Project Components
+   (this replaces the old <style type="text/tailwindcss"> in HTML)
+   ========================================================= */
+@layer components {
+
+  /* =========================
+     Einheitlicher "Card" Look
+     ========================= */
+  .panel {
+    @apply rounded-3xl border border-sky-200/60 bg-sky-50/60 shadow-sm;
+  }
+  .panel-pad { @apply p-6 sm:p-7; }
+  .panel-tight { @apply p-5 sm:p-6; }
+
+  /* kleine Karte/Box IN einer Karte */
+  .panel-inner {
+    @apply rounded-2xl border border-sky-200/70 bg-sky-50/70 ring-1 ring-sky-200/40;
+  }
+
+  /* Media Cards */
+  .card-praxis {
+    @apply rounded-3xl bg-sky-50/60
+           shadow-sm ring-1 ring-sky-200/40
+           overflow-hidden transition duration-300
+           flex flex-col;
+  }
+  .card-praxis:hover { @apply -translate-y-0.5 shadow-md; }
+
+  .card-praxis-media {
+    @apply aspect-[16/9] bg-gradient-to-tr from-sky-100 via-teal-50 to-emerald-50 overflow-hidden;
+  }
+  .card-praxis-media img { @apply h-full w-full object-cover; }
+
+  /* Ablauf */
+  .step-card { @apply rounded-3xl border border-sky-200/60 bg-sky-50/60 p-6 shadow-sm h-full; }
+
+  /* Section Heads */
+  .section-head { @apply mb-8 text-center lg:text-left; }
+  .section-sub  { @apply mt-2 text-sm text-slate-500; }
+
+  /* Divider */
+  .divider { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .divider > div { @apply border-t border-sky-100; }
+}
+
+/* =========================================================
+   Reduce motion (barrierearm)
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
