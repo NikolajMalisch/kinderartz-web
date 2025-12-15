@@ -76,7 +76,7 @@ a:hover {
 }
 
 /* =========================================================
-    Small utility (optional)
+   Small utility (optional)
    ========================================================= */
 .container-wide {
     width: 100%;
@@ -99,7 +99,7 @@ a:hover {
 }
 
 /* =========================================================
-    Premium UI helpers (optional use as classes)
+   Premium UI helpers (optional use as classes)
    ========================================================= */
 .card-premium {
     border: 1px solid var(--border);
@@ -181,7 +181,7 @@ a:hover {
 }
 
 /* =========================================================
-    Reduce motion (barrierearm)
+   Reduce motion (barrierearm)
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
     * {

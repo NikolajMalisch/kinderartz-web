@@ -1,5 +1,5 @@
 /* =========================================================
-    Tailwind v4 – Entry
+   Tailwind v4 – Entry
    ========================================================= */
 @import "tailwindcss";
 
@@ -9,7 +9,7 @@
 @source "../**/*.{js,ts,vue}";
 
 /* =========================================================
-    Design Tokens (ruhig, medizinisch, kinderfreundlich)
+   Design Tokens (ruhig, medizinisch, kinderfreundlich)
    ========================================================= */
 :root {
     /* Brand (спокойнее, чем sky-500) */
@@ -37,7 +37,7 @@
 }
 
 /* =========================================================
-    Base (clean, lesbar, barrierearm)
+   Base (clean, lesbar, barrierearm)
    ========================================================= */
 html {
     scroll-behavior: smooth;
@@ -76,7 +76,7 @@ a:hover {
 }
 
 /* =========================================================
-    Small utility (optional)
+   Small utility (optional)
    ========================================================= */
 .container-wide {
     width: 100%;
@@ -99,7 +99,7 @@ a:hover {
 }
 
 /* =========================================================
-    Premium UI helpers (optional use as classes)
+   Premium UI helpers (optional use as classes)
    ========================================================= */
 .card-premium {
     border: 1px solid var(--border);
@@ -181,7 +181,7 @@ a:hover {
 }
 
 /* =========================================================
-    Reduce motion (barrierearm)
+   Reduce motion (barrierearm)
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
     * {

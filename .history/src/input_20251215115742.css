@@ -181,7 +181,7 @@ a:hover {
 }
 
 /* =========================================================
-    Reduce motion (barrierearm)
+   Reduce motion (barrierearm)
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
     * {
