@@ -128,7 +128,7 @@ a:hover {
 @layer components {
 
     /* =========================
-        Einheitlicher "Card" Look
+     Einheitlicher "Card" Look
      ========================= */
     .panel {
         @apply rounded-3xl border border-sky-200/60 bg-sky-50/60 shadow-sm;
@@ -189,7 +189,7 @@ a:hover {
 }
 
 /* =========================================================
-    Reduce motion (barrierearm)
+   Reduce motion (barrierearm)
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
     * {
