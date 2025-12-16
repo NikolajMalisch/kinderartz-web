@@ -1,0 +1,133 @@
+/* =========================================================
+   Tailwind v4 – Entry
+   ========================================================= */
+@import "tailwindcss";
+
+/* Tailwind v4: where to scan for class usage */
+@source "../*.html";
+@source "../**/*.html";
+@source "../**/*.{js,ts,vue}";
+
+/* =========================================================
+   BASE (Tokens + Grundtypografie + Focus + Motion)
+   ========================================================= */
+@layer base {
+  :root {
+    --brand: #0369A1;   /* sky-700 */
+    --brand-2: #0284C7; /* sky-600 */
+    --mint: #10B981;
+
+    --text: #0F172A;
+    --muted: #475569;
+
+    --bg: #ffffff;
+    --surface: rgba(255, 255, 255, .85);
+    --border: #DCEAF7;
+
+    --shadow-soft: 0 10px 30px rgba(3, 105, 161, 0.10);
+    --ring: 0 0 0 4px rgba(2, 132, 199, 0.20);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    color: var(--text);
+    background: var(--bg);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  p, li { line-height: 1.65; }
+
+  /* Focus: НЕ ломаем rounded-full */
+  :where(a, button, input, textarea, select):focus-visible {
+    outline: none;
+    box-shadow: var(--ring);
+    border-radius: inherit;
+  }
+
+  a { color: var(--brand); text-underline-offset: 3px; }
+  a:hover { color: #075985; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* =========================================================
+   COMPONENTS (Premium System)
+   ========================================================= */
+@layer components {
+
+  /* ===== Premium cards (универсально, везде одинаково) ===== */
+  .premium-card {
+    @apply rounded-3xl border border-sky-100 bg-white/85 shadow-sm backdrop-blur;
+  }
+  .premium-card-header {
+    @apply border-b border-sky-100 bg-gradient-to-br from-sky-50 via-white to-emerald-50 px-6 py-6;
+  }
+  .premium-card-body {
+    @apply px-6 py-6;
+  }
+
+  /* ===== Premium Buttons ===== */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           rounded-full px-6 py-3 text-sm font-semibold text-white
+           transition active:translate-y-px;
+    background: linear-gradient(180deg, rgba(2, 132, 199, .96), rgba(3, 105, 161, .98));
+    box-shadow: 0 18px 44px -26px rgba(2, 132, 199, .85);
+    border: 1px solid rgba(255, 255, 255, .22);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.03);
+    box-shadow: 0 22px 54px -28px rgba(2, 132, 199, .98);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:focus-visible {
+    box-shadow: var(--ring), 0 22px 54px -28px rgba(2, 132, 199, .98);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           rounded-full px-6 py-3 text-sm font-semibold text-slate-800
+           bg-white/75 backdrop-blur
+           ring-1 ring-slate-200 shadow-sm
+           transition active:translate-y-px;
+  }
+  .btn-ghost:hover {
+    @apply bg-white ring-slate-300 shadow-md;
+    transform: translateY(-1px);
+  }
+  .btn-ghost:active { transform: translateY(0); }
+  .btn-ghost:focus-visible {
+    box-shadow: var(--ring), 0 6px 18px -16px rgba(2, 132, 199, .25);
+  }
+
+  /* ===== твои компоненты (оставил, как было) ===== */
+  .panel { @apply rounded-3xl border border-sky-200/60 bg-sky-50/60 shadow-sm; }
+  .panel-pad { @apply p-6 sm:p-7; }
+  .panel-tight { @apply p-5 sm:p-6; }
+
+  .panel-inner { @apply rounded-2xl border border-sky-200/70 bg-sky-50/70 ring-1 ring-sky-200/40; }
+
+  .card-praxis { @apply rounded-3xl bg-sky-50/60 shadow-sm ring-1 ring-sky-200/40 overflow-hidden transition duration-300 flex flex-col; }
+  .card-praxis:hover { @apply -translate-y-0.5 shadow-md; }
+  .card-praxis-media { @apply aspect-[16/9] bg-gradient-to-tr from-sky-100 via-teal-50 to-emerald-50 overflow-hidden; }
+  .card-praxis-media img { @apply h-full w-full object-cover; }
+
+  .step-card { @apply rounded-3xl border border-sky-200/60 bg-sky-50/60 p-6 shadow-sm h-full; }
+
+  .section-head { @apply mb-8 text-center lg:text-left; }
+  .section-sub { @apply mt-2 text-sm text-slate-500; }
+
+  .divider { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .divider > div { @apply border-t border-sky-100; }
+}

@@ -9,9 +9,14 @@
 @source "../**/*.{js,ts,vue}";
 
 /* =========================================================
-   BASE (Tokens + Grundtypografie + Focus + Motion)
+    BASE LAYER (Tokens + Grundtypografie + Focus)
+   Wichtig: in Tailwind v4 лучше держать базу в @layer base
    ========================================================= */
 @layer base {
+
+    /* =========================
+        Design Tokens (ruhig, medizinisch, kinderfreundlich)
+     ========================= */
     :root {
         --brand: #0369A1;
         /* sky-700 */
@@ -30,6 +35,9 @@
         --ring: 0 0 0 4px rgba(2, 132, 199, 0.20);
     }
 
+    /* =========================
+     Base
+     ========================= */
     html {
         scroll-behavior: smooth;
     }
@@ -47,7 +55,7 @@
         line-height: 1.65;
     }
 
-    /* Focus: НЕ ломаем rounded-full */
+    /* Fokus: НЕ меняем радиус, чтобы не ломать rounded-full */
     :where(a, button, input, textarea, select):focus-visible {
         outline: none;
         box-shadow: var(--ring);
@@ -61,8 +69,12 @@
 
     a:hover {
         color: #075985;
+        /* sky-800-ish */
     }
 
+    /* =========================
+     Reduce motion (barrierearm)
+     ========================= */
     @media (prefers-reduced-motion: reduce) {
         * {
             animation-duration: .01ms !important;
@@ -74,28 +86,26 @@
 }
 
 /* =========================================================
-   COMPONENTS (Premium System)
+   COMPONENTS LAYER
+   (this replaces the old <style type="text/tailwindcss"> in HTML)
    ========================================================= */
 @layer components {
 
-    /* ===== Premium cards (универсально, везде одинаково) ===== */
-    .premium-card {
-        @apply rounded-3xl border border-sky-100 bg-white/85 shadow-sm backdrop-blur;
-    }
+    /* =========================
+     PREMIUM BUTTONS (reusable)
+     ВАЖНО: теперь кнопки в layer -> предсказуемое поведение
+     ========================= */
 
-    .premium-card-header {
-        @apply border-b border-sky-100 bg-gradient-to-br from-sky-50 via-white to-emerald-50 px-6 py-6;
-    }
-
-    .premium-card-body {
-        @apply px-6 py-6;
-    }
-
-    /* ===== Premium Buttons ===== */
     .btn-primary {
         @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white transition active:translate-y-px;
+
+        /* премиальный градиент (спокойный, "medical") */
         background: linear-gradient(180deg, rgba(2, 132, 199, .96), rgba(3, 105, 161, .98));
+
+        /* мягкая глубина */
         box-shadow: 0 18px 44px -26px rgba(2, 132, 199, .85);
+
+        /* тонкий “glass”-контур */
         border: 1px solid rgba(255, 255, 255, .22);
     }
 
@@ -109,6 +119,7 @@
         transform: translateY(0);
     }
 
+    /* чтобы ring НЕ убивал shadow */
     .btn-primary:focus-visible {
         box-shadow: var(--ring), 0 22px 54px -28px rgba(2, 132, 199, .98);
     }
@@ -130,7 +141,9 @@
         box-shadow: var(--ring), 0 6px 18px -16px rgba(2, 132, 199, .25);
     }
 
-    /* ===== твои компоненты (оставил, как было) ===== */
+    /* =========================
+     Einheitlicher "Card" Look
+     ========================= */
     .panel {
         @apply rounded-3xl border border-sky-200/60 bg-sky-50/60 shadow-sm;
     }
@@ -143,10 +156,12 @@
         @apply p-5 sm:p-6;
     }
 
+    /* kleine Karte/Box IN einer Karte */
     .panel-inner {
         @apply rounded-2xl border border-sky-200/70 bg-sky-50/70 ring-1 ring-sky-200/40;
     }
 
+    /* Media Cards */
     .card-praxis {
         @apply rounded-3xl bg-sky-50/60 shadow-sm ring-1 ring-sky-200/40 overflow-hidden transition duration-300 flex flex-col;
     }
@@ -163,10 +178,12 @@
         @apply h-full w-full object-cover;
     }
 
+    /* Ablauf */
     .step-card {
         @apply rounded-3xl border border-sky-200/60 bg-sky-50/60 p-6 shadow-sm h-full;
     }
 
+    /* Section Heads */
     .section-head {
         @apply mb-8 text-center lg:text-left;
     }
@@ -175,6 +192,7 @@
         @apply mt-2 text-sm text-slate-500;
     }
 
+    /* Divider */
     .divider {
         @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
     }
