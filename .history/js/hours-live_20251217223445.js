@@ -1,8 +1,7 @@
 /* =========================================================
     Öffnungszeiten: Premium-Minimal
-    - Nur "Heute" markieren (Highlight + Badge)
-    - Badge immer in EINER ZEILE neben dem Wochentag (kein Umbruch)
-    - Badge etwas weiter rechts (sauberer Abstand)
+    - Nur "Heute" markieren (Highlight + kleines Badge)
+    - Kein Live-Status, kein "geschlossen", kein "öffnet ..."
     - Für Bernd & Maria getrennt:
     -> Jeder Stunden-Block braucht: [data-hours-root]
     - Zeilen brauchen: [data-weekday] (1..7 oder Mo/Montag/Di/...)
@@ -43,27 +42,20 @@
         });
     }
 
-    // Day-Spalte finden (1. Child ist meist Day)
-    function getDayWrap(row) {
-        const children = Array.from(row.children).filter((el) => el && el.nodeType === 1);
-        return children[0] || row;
-    }
-
-    // Badge neben den Tag setzen, ohne Umbruch:
-    // - DayWrap wird zu inline-flex, damit Text + Badge in einer Zeile bleiben
-    function addHeuteBadge(dayWrap) {
-        // DayWrap als "inline-flex" ausrichten (ohne Layout zu zerstören)
-        // Falls dayWrap block ist, macht inline-flex es kompakter, aber bleibt im Flow.
-        dayWrap.classList.add("inline-flex", "items-center", "min-w-0");
-
+    // Kleines "Heute" Badge im Day-Bereich
+    function addHeuteBadge(dayEl) {
         const b = document.createElement("span");
         b.className =
-            // ✅ weiter rechts + niemals umbrechen + nicht schrumpfen
-            "today-badge ml-4 inline-flex shrink-0 items-center whitespace-nowrap rounded-full " +
-            "bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 " +
-            "ring-1 ring-emerald-100";
+            "today-badge ml-2 inline-flex items-center whitespace-nowrap rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-100";
         b.textContent = "Heute";
-        dayWrap.appendChild(b);
+        dayEl.appendChild(b);
+    }
+
+    // Day-Spalte finden
+    function getDayWrap(row) {
+        // Idealfall: 1. Child ist die Day-Spalte
+        const children = Array.from(row.children).filter((el) => el && el.nodeType === 1);
+        return children[0] || row;
     }
 
     function initBlock(scope) {
@@ -80,7 +72,7 @@
             const todayRow = rows.find((x) => x.wd === today);
             if (!todayRow) return;
 
-            // Premium Highlight
+            // Premium Highlight (ruhig)
             todayRow.row.classList.add("bg-sky-50", "ring-1", "ring-sky-200/60");
 
             const dayWrap = getDayWrap(todayRow.row);
@@ -89,7 +81,7 @@
 
         render();
 
-        // Einmal pro Stunde reicht (Mitternacht wird sauber übernommen)
+        // Optional: um Mitternacht automatisch neu setzen (einmal pro Stunde reicht)
         setInterval(render, 60 * 60 * 1000);
     }
 

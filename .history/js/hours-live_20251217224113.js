@@ -1,8 +1,8 @@
 /* =========================================================
-    Öffnungszeiten: Premium-Minimal
-    - Nur "Heute" markieren (Highlight + Badge)
-    - Badge immer in EINER ZEILE neben dem Wochentag (kein Umbruch)
-    - Badge etwas weiter rechts (sauberer Abstand)
+  Öffnungszeiten: Premium-Minimal
+  - Nur "Heute" markieren (Highlight + Badge)
+  - Badge immer in EINER ZEILE neben dem Wochentag (kein Umbruch)
+  - Badge etwas weiter rechts (sauberer Abstand)
     - Für Bernd & Maria getrennt:
     -> Jeder Stunden-Block braucht: [data-hours-root]
     - Zeilen brauchen: [data-weekday] (1..7 oder Mo/Montag/Di/...)

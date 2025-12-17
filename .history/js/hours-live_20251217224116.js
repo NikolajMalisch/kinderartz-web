@@ -1,5 +1,5 @@
 /* =========================================================
-    Öffnungszeiten: Premium-Minimal
+  Öffnungszeiten: Premium-Minimal
     - Nur "Heute" markieren (Highlight + Badge)
     - Badge immer in EINER ZEILE neben dem Wochentag (kein Umbruch)
     - Badge etwas weiter rechts (sauberer Abstand)
