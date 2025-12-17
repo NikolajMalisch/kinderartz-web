@@ -1,8 +1,8 @@
 /* =========================================================
-  Öffnungszeiten: "Heute" + Live-Status (premium, ohne Overlap)
-  - Каждый блок отдельно: контейнер [data-hours-root]
+  Öffnungszeiten: "Heute" + Live-Status (premium, minimal)
+  - Каждый блок часов отдельно: контейнер [data-hours-root]
   - Строки: любой элемент с [data-weekday], часы в data-hours (или вложенный [data-hours])
-  - Badge: DESKTOP = между Day и Time (умное позиционирование), MOBILE = inline
+  - Badge по центру строки (desktop), на мобилке inline (без перекрытий)
 ========================================================= */
 (function () {
   "use strict";
@@ -95,15 +95,18 @@
     return DAY_NAMES[dayNumber];
   }
 
-  function isDesktop() {
-    return window.matchMedia && window.matchMedia("(min-width: 640px)").matches;
+  // desktop: badge center; mobile: inline (чтобы не перекрывать)
+  function getPlacement() {
+    return window.matchMedia && window.matchMedia("(min-width: 640px)").matches
+      ? "center"
+      : "inline";
   }
 
   function clearBadges(scope) {
     scope.querySelectorAll(".today-badge, .live-badge").forEach((el) => el.remove());
     scope.querySelectorAll("[data-weekday]").forEach((row) => {
       row.classList.remove("bg-sky-50", "ring-1", "ring-sky-200/60");
-      // relative не убираем — не мешает и помогает badge'ам
+      // relative не убираем — не мешает и помогает позиционированию
     });
   }
 
@@ -115,70 +118,47 @@
     dayEl.appendChild(b);
   }
 
-  function buildBadge(text, variant, titleText) {
+  // Premium badge: коротко + детали в title (tooltip)
+  // placement: "center" | "inline"
+  function setLiveBadge(targetEl, text, variant, titleText, placement) {
     const b = document.createElement("span");
     b.className =
       "live-badge inline-flex items-center whitespace-nowrap rounded-full px-2.5 py-0.5 text-[11px] font-semibold ring-1 shadow-sm";
-    // badge не должен мешать клику по строке/ссылкам
-    b.style.pointerEvents = "none";
 
     if (variant === "open") {
       b.classList.add("bg-emerald-50", "text-emerald-700", "ring-emerald-100");
     } else {
       b.classList.add("bg-white/70", "text-slate-700", "ring-slate-200");
     }
+
     if (titleText) b.title = titleText;
     b.textContent = text;
-    return b;
+
+    const place = placement || getPlacement();
+
+    // ✅ center in row
+    if (place === "center") {
+      const row = targetEl.closest("[data-weekday]") || targetEl;
+      row.classList.add("relative");
+      b.classList.add(
+        "absolute",
+        "left-1/2",
+        "top-1/2",
+        "-translate-x-1/2",
+        "-translate-y-1/2"
+      );
+      row.appendChild(b);
+      return;
+    }
+
+    // inline near time
+    b.classList.add("ml-2");
+    targetEl.appendChild(b);
   }
 
-  // ✅ Premium placement: badge МЕЖДУ dayWrap и timeWrap (без overlap)
-  function placeBadgeBetween(row, dayWrap, timeWrap, badge) {
-    row.classList.add("relative");
-    badge.classList.add(
-      "absolute",
-      "top-1/2",
-      "-translate-y-1/2",
-      "z-10"
-    );
-
-    // Важно: позиционируем после того, как badge получил размер
-    requestAnimationFrame(() => {
-      const rowRect = row.getBoundingClientRect();
-      const dayRect = dayWrap.getBoundingClientRect();
-      const timeRect = timeWrap.getBoundingClientRect();
-      const badgeRect = badge.getBoundingClientRect();
-
-      // Центр свободного пространства между колонками
-      const gapLeft = dayRect.right;
-      const gapRight = timeRect.left;
-
-      // Если места почти нет — fallback inline (лучше, чем перекрывать)
-      if (gapRight - gapLeft < 40) {
-        badge.classList.remove("absolute", "top-1/2", "-translate-y-1/2", "z-10");
-        badge.classList.add("ml-2");
-        timeWrap.appendChild(badge);
-        return;
-      }
-
-      const center = (gapLeft + gapRight) / 2;
-      let leftPx = center - badgeRect.width / 2;
-
-      // Clamp: чтобы badge не залезал на day/time
-      const padding = 8; // визуальный воздух
-      const minLeft = gapLeft + padding;
-      const maxLeft = gapRight - padding - badgeRect.width;
-
-      leftPx = Math.max(minLeft, Math.min(maxLeft, leftPx));
-
-      // translate в координаты row
-      const leftInRow = leftPx - rowRect.left;
-
-      badge.style.left = `${leftInRow}px`;
-    });
-  }
-
-  // Rows inside scope:
+  // Find rows inside scope:
+  // - row = element with data-weekday
+  // - hours can be on row itself OR inside a child with [data-hours]
   function collectRows(scope) {
     return Array.from(scope.querySelectorAll("[data-weekday]"))
       .map((row) => {
@@ -229,27 +209,20 @@
       const minsNow = nowMinutes();
       const ranges = parseRanges(hours);
 
-      // helper to show badge (desktop between, mobile inline)
-      function showBadge(text, variant, titleText) {
-        const badge = buildBadge(text, variant, titleText);
-        if (!isDesktop()) {
-          badge.classList.add("ml-2");
-          timeWrap.appendChild(badge);
-          return;
-        }
-        row.appendChild(badge);
-        placeBadgeBetween(row, dayWrap, timeWrap, badge);
-      }
-
       // Сегодня полностью закрыто
       if (!ranges.length) {
         const next = findNextOpen(today, minsNow);
         if (next) {
           const minsTo = (1440 - minsNow) + (next.offsetDays - 1) * 1440 + next.range.s;
           const label = nextOpenLabel(next.day, next.offsetDays);
-          showBadge(`öffnet ${label} ${next.range.sTxt}`, "closed", `In ${fmtDuration(minsTo)}`);
+          setLiveBadge(
+            timeWrap,
+            `öffnet ${label} ${next.range.sTxt}`,
+            "closed",
+            `In ${fmtDuration(minsTo)}`
+          );
         } else {
-          showBadge("geschlossen", "closed");
+          setLiveBadge(timeWrap, "geschlossen", "closed");
         }
         return;
       }
@@ -257,14 +230,24 @@
       // Сейчас открыто
       const openRange = ranges.find((r) => minsNow >= r.s && minsNow < r.e);
       if (openRange) {
-        showBadge(`noch ${fmtDurationShort(openRange.e - minsNow)}`, "open", `Geöffnet · bis ${openRange.eTxt}`);
+        setLiveBadge(
+          timeWrap,
+          `noch ${fmtDurationShort(openRange.e - minsNow)}`,
+          "open",
+          `Geöffnet · bis ${openRange.eTxt}`
+        );
         return;
       }
 
       // Откроется сегодня позже
       const nextToday = ranges.find((r) => minsNow < r.s);
       if (nextToday) {
-        showBadge(`öffnet ${nextToday.sTxt}`, "closed", `In ${fmtDuration(nextToday.s - minsNow)}`);
+        setLiveBadge(
+          timeWrap,
+          `öffnet ${nextToday.sTxt}`,
+          "closed",
+          `In ${fmtDuration(nextToday.s - minsNow)}`
+        );
         return;
       }
 
@@ -273,23 +256,20 @@
       if (next) {
         const minsTo = (1440 - minsNow) + (next.offsetDays - 1) * 1440 + next.range.s;
         const label = nextOpenLabel(next.day, next.offsetDays);
-        showBadge(`öffnet ${label} ${next.range.sTxt}`, "closed", `In ${fmtDuration(minsTo)}`);
+        setLiveBadge(
+          timeWrap,
+          `öffnet ${label} ${next.range.sTxt}`,
+          "closed",
+          `In ${fmtDuration(minsTo)}`
+        );
       } else {
-        showBadge("geschlossen", "closed");
+        setLiveBadge(timeWrap, "geschlossen", "closed");
       }
     }
 
     render();
-    const iv = setInterval(render, 60 * 1000);
-
-    // при ресайзе пересчитать позицию (дебаунс)
-    let t = null;
-    window.addEventListener("resize", () => {
-      clearTimeout(t);
-      t = setTimeout(render, 120);
-    }, { passive: true });
-
-    log("initialized:", scope, "interval:", iv);
+    setInterval(render, 60 * 1000);
+    log("initialized:", scope);
     return true;
   }
 
