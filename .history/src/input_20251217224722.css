@@ -9,7 +9,7 @@
 @source "../**/*.{js,ts,vue}";
 
 /* =========================================================
-    BASE (Tokens + Grundtypografie + Focus + Motion)
+   BASE (Tokens + Grundtypografie + Focus + Motion)
    ========================================================= */
 @layer base {
     :root {
@@ -74,7 +74,7 @@
 }
 
 /* =========================================================
-    COMPONENTS (Premium System)
+   COMPONENTS (Premium System)
    ========================================================= */
 @layer components {
 
