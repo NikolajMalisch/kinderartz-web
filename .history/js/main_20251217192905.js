@@ -1,5 +1,5 @@
 /* =========================================================
-    main.js – UI helpers (Year, Mobile Menu)
+   main.js – UI helpers (Year, Mobile Menu)
    ========================================================= */
 (function () {
     // Footer year
